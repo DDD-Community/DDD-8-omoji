@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MultipleImagePicker from "@baronha/react-native-multiple-image-picker";
 import { Dimensions, FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import CustomIcon from "./CustomIcon";
 
 export function ImageUploader() {
   const [images, setImages] = useState([]);
@@ -13,6 +14,7 @@ export function ImageUploader() {
         usedCameraButton: false,
         isCrop: false,
         isCropCircle: false,
+        selectedColor: "#AF68FF",
       });
       console.log("response: ", response);
       setImages(response);
@@ -33,7 +35,7 @@ export function ImageUploader() {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View>
+      <View style={styles.imageContainer}>
         <Image
           width={IMAGE_WIDTH}
           source={{
@@ -47,9 +49,8 @@ export function ImageUploader() {
         <Pressable
           onPress={() => onDelete(item)}
           activeOpacity={0.9}
-          style={styles.buttonDelete}
-        >
-          <Text style={styles.titleDelete}>x</Text>
+          style={styles.buttonDelete}>
+          <CustomIcon name="iconClose" color={"#FFFFFF"} size={9} />
         </Pressable>
       </View>
     );
@@ -79,13 +80,16 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     paddingTop: 25,
-    paddingLeft: 16,
-    paddingRight: 16,
+    // paddingLeft: 16,
+    // paddingRight: 16,
     paddingBottom: 40,
   },
   uploadButton: {
     backgroundColor: "#DDDDDD",
     justifyContent: "center",
+  },
+  imageContainer: {
+    position: "relative",
   },
   media: {
     height: IMAGE_WIDTH,
@@ -105,13 +109,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   buttonDelete: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
+    width: 22,
+    height: 22,
     position: "absolute",
-    top: 6,
-    right: 6,
+    top: 4,
+    right: 15,
     backgroundColor: "#282828",
     borderRadius: 11,
+    justifyContent: "center",
+    alignItems: "center"
   },
   titleDelete: {
     color: "#FFFFFF",

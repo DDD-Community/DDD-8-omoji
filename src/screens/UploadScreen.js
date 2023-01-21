@@ -2,6 +2,8 @@ import * as React from "react";
 import { Animated, Button, Easing, FlatList, Pressable, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ImageUploader } from "../component/ImageUploader";
+import { ImageUploadForm } from "../component/ImageUploadForm";
+import CustomIcon from "../component/CustomIcon";
 
 const DEFAULT_HEIGHT = 300;
 
@@ -58,19 +60,20 @@ export function UploadScreen({
     <Animated.View style={[styles.uploadScreen, { height: screenHeight, bottom }]}>
       <View style={[styles.uploadScreenContainer, {
         paddingTop: insets.top,
-        paddingRight: insets.right,
+        paddingRight: insets.right + 16,
         paddingBottom: insets.bottom,
-        paddingLeft: insets.left,
+        paddingLeft: insets.left + 16,
       }]}>
         <View style={styles.uploadScreenHeader}>
           <Pressable>
-            <Text style={styles.button} onPress={onOuterClick}>뒤로</Text>
+            <CustomIcon name="iconClose" color={"#FFFFFF"} size={18} onPress={onOuterClick} />
           </Pressable>
           <Pressable>
             <Text style={styles.button} onPress={onOuterClick}>완료</Text>
           </Pressable>
         </View>
         <ImageUploader></ImageUploader>
+        <ImageUploadForm></ImageUploadForm>
       </View>
     </Animated.View>
   );
@@ -99,9 +102,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingTop: 16,
-    paddingRight: 18,
+    paddingRight: 2,
     paddingBottom: 16,
-    paddingLeft: 18,
+    paddingLeft: 2,
   },
   button: {
     color: "#8F8F8F",
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
   },
   uploadButton: {
     width: "30%",
-    height: 96
+    height: 96,
   },
   openPicker: {
     justifyContent: "center",

@@ -6,6 +6,7 @@ import CustomIcon from "./src/component/CustomIcon";
 import { UploadScreen } from "./src/screens/UploadScreen";
 import { Dimensions, SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { MyPage } from "./src/screens/MyPage";
 
 const Tab = createBottomTabNavigator();
 const MyTheme = {
@@ -30,7 +31,7 @@ export default function App() {
       <StatusBar barStyle="light-content" />
       <SafeAreaProvider style={styles.safeAreaView}>
         <NavigationContainer theme={MyTheme} style={styles.navContainer}>
-          <Tab.Navigator initialRouteName="Main"
+          <Tab.Navigator initialRouteName="메인"
                          screenOptions={{
                            headerStyle: {
                              backgroundColor: "#17171B",
@@ -40,10 +41,10 @@ export default function App() {
                              backgroundColor: "#17171B",
                            },
                          }}>
-            <Tab.Screen name="Main" component={MainScreen} options={{
+            <Tab.Screen name="메인" component={MainScreen} options={{
               tabBarIcon: ({ color }) => <CustomIcon name="iconMain" color={color} size={35} />,
             }} />
-            <Tab.Screen name="upload"
+            <Tab.Screen name="새 게시물"
                         component={UploadScreen}
                         options={{
                           tabBarIcon: ({ color }) => <CustomIcon name="iconUpload" color={color} size={35} />,
@@ -55,7 +56,7 @@ export default function App() {
                             setShowBottomSheet(true);
                           },
                         }} />
-            <Tab.Screen name="my" component={MainScreen} options={{
+            <Tab.Screen name="마이페이지" component={MyPage} options={{
               tabBarIcon: ({ color }) => <CustomIcon name="iconMyPage" color={color} size={35} />,
             }} />
           </Tab.Navigator>
