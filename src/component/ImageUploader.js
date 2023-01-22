@@ -65,7 +65,7 @@ export function ImageUploader() {
         data={images}
         keyExtractor={(item, index) => (item?.filename ?? item?.path) + index}
         renderItem={renderItem}
-        numColumns={5}
+        horizontal={true}
       />
     </View>
   );

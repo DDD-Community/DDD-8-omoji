@@ -4,9 +4,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainScreen } from "./src/screens/MainScreen";
 import CustomIcon from "./src/component/CustomIcon";
 import { UploadScreen } from "./src/screens/UploadScreen";
-import { Dimensions, SafeAreaView, StatusBar, StyleSheet } from "react-native";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Dimensions, StatusBar, StyleSheet } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { MyPage } from "./src/screens/MyPage";
+import "react-native-gesture-handler";
+
 
 const Tab = createBottomTabNavigator();
 const MyTheme = {
@@ -30,18 +32,25 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaProvider style={styles.safeAreaView}>
-        <NavigationContainer theme={MyTheme} style={styles.navContainer}>
+        <NavigationContainer theme={MyTheme}>
           <Tab.Navigator initialRouteName="메인"
                          screenOptions={{
                            headerStyle: {
                              backgroundColor: "#17171B",
+                             elevation: 0,
+                             shadowOpacity: 0,
+                             borderBottomWidth: 0,
                            },
                            tabBarShowLabel: false,
                            tabBarStyle: {
                              backgroundColor: "#17171B",
+                             shadowOffset: { width: 0, height: 0 },
+                             shadowColor: "#666666",
+                             shadowOpacity: 0.5,
+                             shadowRadius: 4
                            },
                          }}>
-            <Tab.Screen name="메인" component={MainScreen} options={{
+            <Tab.Screen name="로고" component={MainScreen} options={{
               tabBarIcon: ({ color }) => <CustomIcon name="iconMain" color={color} size={35} />,
             }} />
             <Tab.Screen name="새 게시물"
@@ -51,7 +60,6 @@ export default function App() {
                         }}
                         listeners={{
                           tabPress: e => {
-                            // Prevent default action
                             e.preventDefault();
                             setShowBottomSheet(true);
                           },
@@ -62,36 +70,9 @@ export default function App() {
           </Tab.Navigator>
         </NavigationContainer>
 
-        <UploadScreen show={showBottomSheet} height={height} onOuterClick={hide}>
-          {/*<View style={styles.bottomSheetContent}>*/}
-          {/*  <Text style={styles.bottomSheetText}>Hey boys, hey girls!</Text>*/}
-          {/*  <Pressable onPress={hide} style={styles.bottomSheetCloseButton}>*/}
-          {/*    <Text style={styles.buttonText}>X Close</Text>*/}
-          {/*  </Pressable>*/}
-          {/*</View>*/}
-        </UploadScreen>
+        <UploadScreen show={showBottomSheet} height={height} onOuterClick={hide}></UploadScreen>
       </SafeAreaProvider>
     </>
-
-    // <NavigationContainer theme={MyTheme} style={styles.navContainer}>
-    //   <Tab.Navigator initialRouteName="Main"
-    //                  screenOptions={{
-    //                    tabBarShowLabel: false,
-    //                    tabBarStyle: {
-    //                      backgroundColor: "#17171B",
-    //                    },
-    //                  }}>
-    //     <Tab.Screen name="Main" component={MainScreen} options={{
-    //       tabBarIcon: ({ color }) => <CustomIcon name="iconMain" color={color} size={35} />,
-    //     }} />
-    //     <Tab.Screen name="upload" component={UploadScreen} options={{
-    //       tabBarIcon: ({ color }) => <CustomIcon name="iconUpload" color={color} size={35} />,
-    //     }} />
-    //     <Tab.Screen name="my" component={MainScreen} options={{
-    //       tabBarIcon: ({ color }) => <CustomIcon name="iconMyPage" color={color} size={35} />,
-    //     }} />
-    //   </Tab.Navigator>
-    // </NavigationContainer>
   );
 }
 
@@ -127,9 +108,3 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
-
-// const styles = StyleSheet.create({
-//   navContainer: {
-//     backgroundColor: "#17171B",
-//   },
-// });
