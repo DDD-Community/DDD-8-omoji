@@ -4,13 +4,14 @@ import {View, Text, StyleSheet} from 'react-native';
 export function Tag({text}) {
   return (
     <View style={styles.tag}>
-      <Text>{text}</Text>
+      <Text style={styles.tag}>{text}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   tag: {
+    alignSelf: 'flex-start',
     backgroundColor: '#fff',
     height: 24,
     display: 'flex',
@@ -19,7 +20,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 3,
     paddingLeft: 8,
-    paddingRight: 8,
     marginRight: 8,
   },
 });
