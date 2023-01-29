@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Dimensions, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
-import Carousel from "react-native-reanimated-carousel/src/Carousel";
 import { ImageCard } from "../component/ImageCard";
 
 const { width, height } = Dimensions.get("window");
@@ -14,7 +13,6 @@ export function MainScreen() {
         cardContainerStyle={{ width: width - 32, flex: 1, height: "100%" }}
         secondCardZoom={0.7}
         duratio={1000}
-        outputRotationRange={["0deg", "0deg", "0deg"]}
         onSwipedLeft={() => {
           console.log("left");
         }}
