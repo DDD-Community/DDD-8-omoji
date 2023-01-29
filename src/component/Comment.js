@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   commentContainer: {
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: 16,
   },
   nickname: {
     color: '#C0C0C0',
