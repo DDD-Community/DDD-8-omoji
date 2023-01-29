@@ -117,17 +117,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    safeAreaView: {
-      flex: 1,
-      backgroundColor: "#17171B",
-    },
-    container: "#17171B"ex: 1,
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: '#17171B',
+  },
+  container: {
+    flex: 1,
   },
   showButton: {
     marginTop: 48,
     padding: 16,
-    backgroundColor: "mediumspringgreen",
-    alignSelf: "center",
+    backgroundColor: 'mediumspringgreen',
+    alignSelf: 'center',
     borderRadius: 8,
   },
   buttonText: {
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   },
   bottomSheetContent: {
     padding: 40,
-    alignItems: "center",
+    alignItems: 'center',
   },
   bottomSheetText: {
     fontSize: 24,
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
   },
   bottomSheetCloseButton: {
     padding: 16,
-    backgroundColor: "deeppink",
+    backgroundColor: 'deeppink',
     borderRadius: 8,
   },
 });

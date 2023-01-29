@@ -1,29 +1,29 @@
-import * as React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
-import CardStack, { Card } from "react-native-card-stack-swiper";
-import { ImageCard } from "../component/ImageCard";
+import * as React from 'react';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import CardStack, {Card} from 'react-native-card-stack-swiper';
+import {ImageCard} from '../component/ImageCard';
 
-const { width, height } = Dimensions.get("window");
+const {width, height} = Dimensions.get('window');
 
 export function MainScreen() {
   return (
     <View style={styles.container}>
       <CardStack
-        style={[styles.content, { width: width - 32 }]}
-        cardContainerStyle={{ width: width - 32, flex: 1, height: "100%" }}
+        style={[styles.content, {width: width - 32}]}
+        cardContainerStyle={{width: width - 32, flex: 1, height: '100%'}}
         secondCardZoom={0.7}
         duratio={1000}
         onSwipedLeft={() => {
-          console.log("left");
+          console.log('left');
         }}
         ref={swiper => {
           this.swiper = swiper;
         }}>
-        <ImageCard style={{ flex: 1 }}></ImageCard>
-        <Card style={[styles.card, { backgroundColor: "red" }]}>
+        <ImageCard style={{flex: 1}}></ImageCard>
+        <Card style={[styles.card, {backgroundColor: 'red'}]}>
           <Text style={styles.label}>B</Text>
         </Card>
-        <Card style={[styles.card, { backgroundColor: "blue" }]}>
+        <Card style={[styles.card, {backgroundColor: 'blue'}]}>
           <Text style={styles.label}>C</Text>
         </Card>
       </CardStack>
@@ -34,8 +34,8 @@ export function MainScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    just"center"nt: "center",
+    alignItems: 'center',
+    just"center"nt: 'center',
     padd"center"18,
     paddingRight: 16,
     paddingBottom: 18,

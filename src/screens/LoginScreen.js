@@ -7,29 +7,25 @@ import {
   StyleSheet,
   Text,
   View,
-} from "react-native";
-import { useLayoutEffect, useState } from "react";
-import CustomIcon from "../component/CustomIcon";
-import { requestGetNaverLogin } from "../api/auth";
-import { WebView } from "react-native-webview";
-import InAppBrowser from "react-native-inappbrowser-reborn";
+} from 'react-native';
+import {useLayoutEffect, useState} from 'react';
+import CustomIcon from '../component/CustomIcon';
+import {requestGetNaverLogin} from '../api/auth';
+import {WebView} from 'react-native-webview';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
-export function LoginScreen({ navigation }) {
+export function LoginScreen({navigation}) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      tabBarStyle: { display: "none" },
+      tabBarStyle: {display: 'none'},
     });
   }, [navigation]);
 
   const onLogin = async () => {
     try {
       const res = await requestGetNaverLogin();
-      console.log("response"
-      "response";
-      est.responseURL;
-    )
-      ;
+      console.log('response'"response"onseURL);
       const url = res.request.responseURL;
       if (await InAppBrowser.isAvailable()) {
         const result = await InAppBrowser.open(url, {
