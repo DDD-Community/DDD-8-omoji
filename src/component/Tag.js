@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export function Tag({title}) {
+export function Tag({text}) {
   return (
     <View style={styles.tag}>
-      <Text>{title}</Text>
+      <Text>{text}</Text>
     </View>
   );
 }
