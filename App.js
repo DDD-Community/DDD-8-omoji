@@ -1,15 +1,16 @@
-import React from "react";
-import { DarkTheme, NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MainScreen } from "./src/screens/MainScreen";
-import CustomIcon from "./src/component/CustomIcon";
-import { UploadScreen } from "./src/screens/UploadScreen";
-import { Dimensions, StatusBar, StyleSheet } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { MyPage } from "./src/screens/MyPage";
-import "react-native-gesture-handler";
-import { LoginScreen } from "./src/screens/LoginScreen";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from 'react';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {MainScreen} from './src/screens/MainScreen';
+import CustomIcon from './src/component/CustomIcon';
+import {UploadScreen} from './src/screens/UploadScreen';
+import {Dimensions, StyleSheet} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {MyPage} from './src/screens/MyPage';
+import 'react-native-gesture-handler';
+import {LoginScreen} from './src/screens/LoginScreen';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {RecoilRoot} from 'recoil';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -17,30 +18,29 @@ const NavigationContainerTheme = {
   dart: true,
   colors: {
     ...DarkTheme.colors,
-    primary: "rgb(255, 255, 255)",
-    background: "#17171B",
+    primary: 'rgb(255, 255, 255)',
+    background: '#17171B',
   },
 };
 
 const NavigatorScreenOptions = {
   headerStyle: {
-    backgroundColor: "#17171B",
-    elevation: 0,
-    shadowOpacity: 0,
+    backgroundColor: '#17171B',
+    eleva"#17171B"    shadowOpacity: 0,
     borderBottomWidth: 0,
   },
   tabBarShowLabel: false,
   tabBarStyle: {
-    backgroundColor: "#17171B",
-    shadowOffset: { width: 0, height: 0 },
-    shadowColor: "#666666",
-    shadowOpacity: 0.5,
+    backgroundColor: '#17171B',
+    shado"#17171B"{ width: 0, height: 0 },
+    shadowColor: '#666666',
+    shado"#666666" 0.5,
     shadowRadius: 4,
   },
 };
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
-export default function App() {
+export d"window"unction App() {
   const [showBottomSheet, setShowBottomSheet] = React.useState(false);
 
   const HomeTabs = () => {
@@ -92,27 +92,28 @@ export default function App() {
   };
 
   return (
-    <>
-      <SafeAreaProvider style={styles.safeAreaView}>
-        <NavigationContainer theme={NavigationContainerTheme}>
-          <Stack.Navigator
-            initialRouteName="로그인"
-            screenOptions={{
-              ...NavigatorScreenOptions,
-              headerShown: false,
-              headerMode: "none",
-            }}>
-            <Stack.Screen name="로그인" component={LoginScreen} />
-            <Stack.Screen name="홈" component={HomeTabs} />
-          </Stack.Navigator>
-        </NavigationContainer>
+    <RecoilRoot>
+      <>
+        <SafeAreaProvider style={styles.safeAreaView}>
+          <NavigationContainer theme={NavigationContainerTheme}>
+            <Stack.Navigator
+              initialRouteName="로그인"
+              screenOptions={{
+                ...NavigatorScreenOptions,
+                headerShown: false,
+                headerMode: "none",
+              }}>
+              <Stack.Screen name="로그인" component={LoginScreen} />
+              <Stack.Screen name="홈" component={HomeTabs} />
+            </Stack.Navigator>
+          </NavigationContainer>
 
-        <UploadScreen
-          show={showBottomSheet}
-          height={height}
-          onOuterClick={hide}></UploadScreen>
-      </SafeAreaProvider>
-    </>
+          <UploadScreen
+            show={showBottomSheet}
+            onOuterClick={hide}></UploadScreen>
+        </SafeAreaProvider>
+      </>
+    </RecoilRoot>
   );
 }
 

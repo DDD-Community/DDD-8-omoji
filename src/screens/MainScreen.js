@@ -4,23 +4,28 @@ import CardStack, {Card} from 'react-native-card-stack-swiper';
 import {ImageCard} from '../component/ImageCard';
 import {EvaluateButton} from '../component/EvaluateButton';
 import GoodOrBadLottie from '../component/GoodOrBadLottie';
+import {useEffect} from 'react';
+import {requestGetMainPosts} from '../api/posts';
+
 const {width, height} = Dimensions.get('window');
 
 export function MainScreen() {
   const [activeGood, setActiveGood] = React.useState(false);
   const [activeBad, setActiveBad] = React.useState(false);
+  useEffect(() => {
+    requestGetMainPosts(0, 1).then(res => console.log(res));
+  });
   return (
     <View style={styles.container}>
       <CardStack
         style={[styles.content, {width: width - 32}]}
         cardContainerStyle={{width: width - 32, flex: 1, height: '100%'}}
         secondCardZoom={0.7}
-        duratio={1000}
+        duration={1000}
         onSwipedLeft={() => {
           console.log('left');
-        }}
-        ref={swiper => {}}>
-        <ImageCard style={{flex: 1}} />
+        }}>
+        <ImageCard style={{flex: 1}}></ImageCard>
         <Card style={[styles.card, {backgroundColor: 'red'}]}>
           <Text style={styles.label}>B</Text>
         </Card>

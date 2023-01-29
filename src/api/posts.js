@@ -1,7 +1,11 @@
 import axios from './core';
 
 export const requestPostPosts = async data => {
-  return axios.post('/posts', data);
+  return axios.post('/posts', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 };
 
 export const requestGetPost = async id => {

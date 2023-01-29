@@ -1,9 +1,21 @@
-import * as React from "react";
-import { Animated, Button, Easing, FlatList, Pressable, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ImageUploader } from "../component/ImageUploader";
-import { ImageUploadForm } from "../component/ImageUploadForm";
-import CustomIcon from "../component/CustomIcon";
+import React from 'react';
+import {
+  Animated,
+  Easing,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {ImageUploader} from '../component/ImageUploader';
+import {ImageUploadForm} from '../component/ImageUploadForm';
+import CustomIcon from '../component/CustomIcon';
+import {useRecoilState} from 'recoil';
+import {uploadFormState} from '../atom/uploadAtoms';
+import {requestPostPosts} from '../api/posts';
 
 const DEFAULT_HEIGHT = 300;
 
@@ -39,37 +51,62 @@ function useAnimatedBottom(show: boolean, height: number = DEFAULT_HEIGHT) {
 }
 
 interface Props {
-  children: React.ReactNode;
   show: boolean;
-  height?: number;
   onOuterClick?: () => void;
 }
 
-export function UploadScreen({
-                               children,
-                               show,
-                               height = DEFAULT_HEIGHT,
-                               onOuterClick,
-                             }: Props) {
+export function UploadScreen({ show, onOuterClick }: Props) {
   const { height: screenHeight } = useWindowDimensions();
   const insets = useSafeAreaInsets();
+  const [form, setForm] = useRecoilState(uploadFormState);
 
   const bottom = useAnimatedBottom(show, screenHeight);
+  const onClickUpload = () => {
+    const formData = new FormData();
+    formData.append('title', for"title");
+    formData.append('description"description"iption);
+    form.imgs.forEach(img =>
+      formData.append('imgs', {
+  "imgs"name: img.name,
+        type: img.type,
+        uri: Platform.OS === 'ios' ? img."ios"eplace('file://', '"file://"ur""
+      }),
+    );
+    requestPostPosts(formData)
+      .then(res => {
+        console.log('uploadRes',"uploadRes"  })
+      .catch(e => {
+        console.log('uploadError"uploadError"  throw new Error(e);
+      });
+    return onOuterClick();
+  };
 
   return (
-    <Animated.View style={[styles.uploadScreen, { height: screenHeight, bottom }]}>
-      <View style={[styles.uploadScreenContainer, {
-        paddingTop: insets.top,
-        paddingRight: insets.right + 16,
-        paddingBottom: insets.bottom,
-        paddingLeft: insets.left + 16,
-      }]}>
+    <Animated.View
+      style={[styles.uploadScreen, { height: screenHeight, bottom }]}>
+      <View
+        style={[
+          styles.uploadScreenContainer,
+          {
+            paddingTop: insets.top,
+            paddingRight: insets.right + 16,
+            paddingBottom: insets.bottom,
+            paddingLeft: insets.left + 16,
+          },
+        ]}>
         <View style={styles.uploadScreenHeader}>
           <Pressable>
-            <CustomIcon name="iconClose" color={"#FFFFFF"} size={18} onPress={onOuterClick} />
+            <CustomIcon
+              name="iconClose"
+              color={'#FFFFFF'}
+ "#FFFFFF"    size={18}
+              onPress={onOuterClick}
+            />
           </Pressable>
           <Pressable>
-            <Text style={styles.button} onPress={onOuterClick}>완료</Text>
+            <Text style={styles.button} onPress={onClickUpload}>
+              완료
+            </Text>
           </Pressable>
         </View>
         <ImageUploader></ImageUploader>
