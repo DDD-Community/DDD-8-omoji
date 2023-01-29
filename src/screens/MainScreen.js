@@ -19,17 +19,13 @@ export function MainScreen() {
         ref={swiper => {
           this.swiper = swiper;
         }}>
-        <ImageCard style={{flex: 1}}></ImageCard>
-        {/*<Card style={[styles.card]}>*/}
-        {/*  <Pressable*/}
-        {/*    style={{ flex: 1, width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}*/}
-        {/*    onPress={(evt) => console.log(evt.nativeEvent.locationX)}*/}
-        {/*  >*/}
-        {/*    <Text style={styles.label}>A</Text>*/}
-        {/*  </Pressable>*/}
-        {/*</Card>*/}
-        <Card style={[styles.card, { backgroundColor: "red" }]}><Text style={styles.label}>B</Text></Card>
-        <Card style={[styles.card, { backgroundColor: "blue" }]}><Text style={styles.label}>C</Text></Card>
+        <ImageCard style={{ flex: 1 }}></ImageCard>
+        <Card style={[styles.card, { backgroundColor: "red" }]}>
+          <Text style={styles.label}>B</Text>
+        </Card>
+        <Card style={[styles.card, { backgroundColor: "blue" }]}>
+          <Text style={styles.label}>C</Text>
+        </Card>
       </CardStack>
     </View>
   );
@@ -39,8 +35,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 18,
+    just"center"nt: "center",
+    padd"center"18,
     paddingRight: 16,
     paddingBottom: 18,
     paddingLeft: 16,
