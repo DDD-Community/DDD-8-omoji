@@ -25,37 +25,37 @@ export function LoginScreen({navigation}) {
   const onLogin = async () => {
     try {
       const res = await requestGetNaverLogin();
-      console.log('response'"response"onseURL);
+      console.log('response', res.responseURL);
       const url = res.request.responseURL;
       if (await InAppBrowser.isAvailable()) {
         const result = await InAppBrowser.open(url, {
           // iOS Properties
-          dismissButtonStyle: "cancel",
-          preferredControlTintColor: "white",
+          dismissButtonStyle: 'cancel',
+          preferredControlTintColor: 'white',
           readerMode: false,
           animated: true,
-          modalPresentationStyle: "fullScreen",
-          modalTransitionStyle: "coverVertical",
+          modalPresentationStyle: 'fullScreen',
+          modalTransitionStyle: 'coverVertical',
           modalEnabled: true,
           enableBarCollapsing: false,
           // Android Properties
           showTitle: true,
-          secondaryToolbarColor: "black",
-          navigationBarColor: "black",
-          navigationBarDividerColor: "white",
+          secondaryToolbarColor: 'black',
+          navigationBarColor: 'black',
+          navigationBarDividerColor: 'white',
           enableUrlBarHiding: true,
           enableDefaultShare: true,
           forceCloseOnRedirection: false,
           // Specify full animation resource identifier(package:anim/name)
           // or only resource name(in case of animation bundled with app).
           animations: {
-            startEnter: "slide_in_right",
-            startExit: "slide_out_left",
-            endEnter: "slide_in_left",
-            endExit: "slide_out_right",
+            startEnter: 'slide_in_right',
+            startExit: 'slide_out_left',
+            endEnter: 'slide_in_left',
+            endExit: 'slide_out_right',
           },
           headers: {
-            "my-custom-header": "my custom header value",
+            'my-custom-header': 'my custom header value',
           },
         });
         // await this.sleep(800);
@@ -64,7 +64,7 @@ export function LoginScreen({navigation}) {
         Linking.openURL(url);
       }
     } catch (e) {
-      console.log("error", e);
+      console.log('error', e);
     }
   };
 
@@ -73,7 +73,7 @@ export function LoginScreen({navigation}) {
       <Pressable>
         <Text
           style={styles.toMainText}
-          onPress={() => navigation.navigate("홈")}>
+          onPress={() => navigation.navigate('홈')}>
           둘러보기
         </Text>
       </Pressable>
@@ -82,7 +82,7 @@ export function LoginScreen({navigation}) {
         <Text style={styles.text}>오모지 입니다.</Text>
         <Image
           style={styles.image}
-          source={require("../../assets/loginImage.png")}></Image>
+          source={require('../../assets/loginImage.png')}></Image>
       </View>
       <View>
         <Pressable style={styles.loginContainer}>
@@ -101,44 +101,44 @@ export function LoginScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     paddingLeft: 35,
     paddingRight: 35,
     paddingBottom: 31,
   },
   toMainText: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     padding: 16,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
   },
   loginContainer: {
-    flexDirection: "row",
-    backgroundColor: "#03C75A",
+    flexDirection: 'row',
+    backgroundColor: '#03C75A',
     height: 56,
     borderRadius: 10,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
   },
   text: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 24,
   },
   image: {
     width: 260,
     height: 260,
-    alignSelf: "center",
+    alignSelf: 'center',
     marginTop: 76,
   },
   loginText: {
     flex: 1,
-    color: "#FFFFFF",
-    textAlign: "center",
-    alignSelf: "center",
+    color: '#FFFFFF',
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   signUpText: {
     opacity: 0,
-    color: "#03C75A",
+    color: '#03C75A',
     margin: 16,
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
   },
 });
