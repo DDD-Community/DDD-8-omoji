@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
     padding: 3,
     paddingLeft: 8,
     paddingRight: 8,
+    marginRight: 8,
   },
 });
