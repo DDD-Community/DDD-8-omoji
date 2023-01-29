@@ -1,6 +1,8 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import CommentIcon from '../imgs/comment-icon.png';
+
+const {width} = Dimensions.get('window');
 
 export function Comment({nickname, comment}) {
   return (
@@ -26,6 +28,6 @@ const styles = StyleSheet.create({
   comment: {
     color: '#FFFFFF',
     marginRight: 8,
-    maxWidth: '90%',
+    width: width - 100,
   },
 });
