@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     height: 72,
     backgroundColor: '#17171B',
     opacity: 0.85,
+    marginRight: 10,
+    marginLeft: 10,
   },
   image: {
     width: 36,
