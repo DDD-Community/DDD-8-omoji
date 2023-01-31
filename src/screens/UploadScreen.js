@@ -19,7 +19,7 @@ import {requestPostPosts} from '../api/posts';
 
 const DEFAULT_HEIGHT = 300;
 
-function useAnimatedBottom(show: boolean, height: number = DEFAULT_HEIGHT) {
+function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
   const animatedValue = React.useRef(new Animated.Value(0));
 
   const bottom = animatedValue.current.interpolate({
