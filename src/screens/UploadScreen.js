@@ -32,7 +32,6 @@ function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
       Animated.timing(animatedValue.current, {
         toValue: 1,
         duration: 350,
-        // Accelerate then decelerate - https://cubic-bezier.com/#.28,0,.63,1
         easing: Easing.bezier(0.28, 0, 0.63, 1),
         useNativeDriver: false, // 'bottom' is not supported by native animated module
       }).start();
@@ -40,7 +39,6 @@ function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
       Animated.timing(animatedValue.current, {
         toValue: 0,
         duration: 250,
-        // Accelerate - https://easings.net/#easeInCubic
         easing: Easing.cubic,
         useNativeDriver: false,
       }).start();
@@ -50,40 +48,22 @@ function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
   return bottom;
 }
 
-interface Props {
-  show: boolean;
-  onOuterClick?: () => void;
-}
-
-export function UploadScreen({ show, onOuterClick }: Props) {
-  const { height: screenHeight } = useWindowDimensions();
+export function UploadScreen({show, onOuterClick}) {
+  const {height: screenHeight} = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [form, setForm] = useRecoilState(uploadFormState);
 
   const bottom = useAnimatedBottom(show, screenHeight);
   const onClickUpload = () => {
     const formData = new FormData();
-    formData.append('title', for"title");
-    formData.append('description"description"iption);
-    form.imgs.forEach(img =>
-      formData.append('imgs', {
-  "imgs"name: img.name,
-        type: img.type,
-        uri: Platform.OS === 'ios' ? img."ios"eplace('file://', '"file://"ur""
-      }),
-    );
-    requestPostPosts(formData)
-      .then(res => {
-        console.log('uploadRes',"uploadRes"  })
-      .catch(e => {
-        console.log('uploadError"uploadError"  throw new Error(e);
-      });
+    formData.append('title', 'title');
+    formData.append('description', description);
     return onOuterClick();
   };
 
   return (
     <Animated.View
-      style={[styles.uploadScreen, { height: screenHeight, bottom }]}>
+      style={[styles.uploadScreen, {height: screenHeight, bottom}]}>
       <View
         style={[
           styles.uploadScreenContainer,
@@ -99,7 +79,7 @@ export function UploadScreen({ show, onOuterClick }: Props) {
             <CustomIcon
               name="iconClose"
               color={'#FFFFFF'}
- "#FFFFFF"    size={18}
+              size={18}
               onPress={onOuterClick}
             />
           </Pressable>
@@ -118,41 +98,41 @@ export function UploadScreen({ show, onOuterClick }: Props) {
 
 const styles = StyleSheet.create({
   uploadScreen: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
     zIndex: 1,
     // Here you can set a common style for all bottom sheets, or nothing if you
     // want different designs
-    backgroundColor: "#17171B",
+    backgroundColor: '#17171B',
     borderRadius: 16,
   },
   uploadScreenContainer: {
-    height: "100%",
-    alignItems: "center",
+    height: '100%',
+    alignItems: 'center',
   },
   uploadScreenHeader: {
     height: 60,
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: 16,
     paddingRight: 2,
     paddingBottom: 16,
     paddingLeft: 2,
   },
   button: {
-    color: "#8F8F8F",
+    color: '#8F8F8F',
     fontSize: 16,
   },
   headerTitle: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
   },
   container: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     rowGap: 8,
     paddingTop: 25,
     paddingLeft: 12,
@@ -160,12 +140,12 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
   uploadButton: {
-    width: "30%",
+    width: '30%',
     height: 96,
   },
   openPicker: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
   },
 });
