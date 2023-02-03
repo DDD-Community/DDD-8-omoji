@@ -4,12 +4,14 @@ import LookAround1 from '../imgs/lookAround1.png';
 import LookAround2 from '../imgs/lookAround2.png';
 import LookAround3 from '../imgs/lookAround3.png';
 import {Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');
 
-const LookAroundScreen = () => {
+const PreviewScreen = () => {
   const [lookAround, setLookAround] = useState(LookAround1);
   const [step, setStep] = useState(0);
+  const navigation = useNavigation();
   return (
     <View>
       <TouchableOpacity
@@ -22,7 +24,7 @@ const LookAroundScreen = () => {
             setLookAround(LookAround3);
             setStep(2);
           } else if (step === 2) {
-            // TODO: main screen으로 route
+            navigation.navigate('로그인');
           }
         }}>
         <Image source={lookAround} style={{height: '100%', width}} />
@@ -38,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LookAroundScreen;
+export default PreviewScreen;

@@ -12,7 +12,7 @@ import {LoginScreen} from './src/screens/LoginScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecoilRoot} from 'recoil';
 import SplashScreen from 'react-native-splash-screen';
-
+import PreviewScreen from './src/screens/PreviewScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 const NavigationContainerTheme = {
@@ -106,6 +106,7 @@ export default function App() {
               }}>
               <Stack.Screen name="로그인" component={LoginScreen} />
               <Stack.Screen name="홈" component={HomeTabs} />
+              <Stack.Screen name="둘러보기" component={PreviewScreen} />
             </Stack.Navigator>
           </NavigationContainer>
 

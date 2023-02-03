@@ -73,7 +73,7 @@ export function LoginScreen({navigation}) {
       <Pressable>
         <Text
           style={styles.toMainText}
-          onPress={() => navigation.navigate('홈')}>
+          onPress={() => navigation.navigate('둘러보기')}>
           둘러보기
         </Text>
       </Pressable>
@@ -82,7 +82,8 @@ export function LoginScreen({navigation}) {
         <Text style={styles.text}>오모지 입니다.</Text>
         <Image
           style={styles.image}
-          source={require('../../assets/loginImage.png')}></Image>
+          source={require('../../assets/loginImage.png')}
+        />
       </View>
       <View>
         <Pressable style={styles.loginContainer}>
