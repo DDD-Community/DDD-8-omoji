@@ -66,7 +66,7 @@ export function ImageUploader() {
           onPress={() => onDelete(item)}
           activeOpacity={0.9}
           style={styles.buttonDelete}>
-          <CustomIcon name="iconClose" color={'#FFFFFF'}"#FFFFFF" />
+          <CustomIcon name="iconClose" color={'#FFFFFF'} />
         </Pressable>
       </View>
     );
@@ -89,23 +89,23 @@ export function ImageUploader() {
   );
 }
 
-const { width } = Dimensions.get("window");
+const {width} = Dimensions.get('window');
 
 const IMAGE_WIDTH = (width - 40) / 3.5;
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     paddingTop: 25,
     paddingBottom: 40,
   },
   uploadButton: {
-    backgroundColor: "#DDDDDD",
-    justifyContent: "center",
+    backgroundColor: '#DDDDDD',
+    justifyContent: 'center',
   },
   imageContainer: {
-    position: "relative",
+    position: 'relative',
   },
   media: {
     height: IMAGE_WIDTH,
@@ -114,30 +114,30 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   openText: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 18,
-    color: "#FFFFFF",
-    textAlign: "center",
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
   openPicker: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
   },
   buttonDelete: {
     width: 22,
     height: 22,
-    position: "absolute",
+    position: 'absolute',
     top: 4,
     right: 15,
-    backgroundColor: "#282828",
+    backgroundColor: '#282828',
     borderRadius: 11,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   titleDelete: {
-    color: "#FFFFFF",
-    fontWeight: "bold",
+    color: '#FFFFFF',
+    fontWeight: 'bold',
     fontSize: 12,
   },
 });
