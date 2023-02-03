@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {DarkTheme, NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainScreen} from './src/screens/MainScreen';
@@ -11,6 +11,7 @@ import 'react-native-gesture-handler';
 import {LoginScreen} from './src/screens/LoginScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecoilRoot} from 'recoil';
+import SplashScreen from 'react-native-splash-screen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -26,21 +27,21 @@ const NavigationContainerTheme = {
 const NavigatorScreenOptions = {
   headerStyle: {
     backgroundColor: '#17171B',
-    eleva"#17171B"    shadowOpacity: 0,
     borderBottomWidth: 0,
   },
   tabBarShowLabel: false,
   tabBarStyle: {
     backgroundColor: '#17171B',
-    shado"#17171B"{ width: 0, height: 0 },
     shadowColor: '#666666',
-    shado"#666666" 0.5,
     shadowRadius: 4,
   },
 };
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
-export d"window"unction App() {
+export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   const [showBottomSheet, setShowBottomSheet] = React.useState(false);
 
   const HomeTabs = () => {
@@ -53,7 +54,7 @@ export d"window"unction App() {
             name="메인"
             component={MainScreen}
             options={{
-              tabBarIcon: ({ color }) => (
+              tabBarIcon: ({color}) => (
                 <CustomIcon name="iconMain" color={color} size={35} />
               ),
             }}
@@ -62,7 +63,7 @@ export d"window"unction App() {
             name="새 게시물"
             component={UploadScreen}
             options={{
-              tabBarIcon: ({ color }) => (
+              tabBarIcon: ({color}) => (
                 <CustomIcon name="iconUpload" color={color} size={35} />
               ),
             }}
@@ -77,7 +78,7 @@ export d"window"unction App() {
             name="마이페이지"
             component={MyPage}
             options={{
-              tabBarIcon: ({ color }) => (
+              tabBarIcon: ({color}) => (
                 <CustomIcon name="iconMyPage" color={color} size={35} />
               ),
             }}
@@ -101,16 +102,14 @@ export d"window"unction App() {
               screenOptions={{
                 ...NavigatorScreenOptions,
                 headerShown: false,
-                headerMode: "none",
+                headerMode: 'none',
               }}>
               <Stack.Screen name="로그인" component={LoginScreen} />
               <Stack.Screen name="홈" component={HomeTabs} />
             </Stack.Navigator>
           </NavigationContainer>
 
-          <UploadScreen
-            show={showBottomSheet}
-            onOuterClick={hide}></UploadScreen>
+          <UploadScreen show={showBottomSheet} onOuterClick={hide} />
         </SafeAreaProvider>
       </>
     </RecoilRoot>
