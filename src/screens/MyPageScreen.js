@@ -5,6 +5,7 @@ import {
   FlatList,
   Dimensions,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import MyPageImageCard from '../component/MyPageImageCard';
 import {useNavigation} from '@react-navigation/native';
@@ -65,7 +66,9 @@ export default function MyPageScreen() {
       </View>
 
       <View>
-        <FlatList
+        <Text>{JSON.stringify(myPosts)}</Text>
+        <Image source={myPosts.posts.imgs[0]} />
+        {/* <FlatList
           keyExtractor={item => item.id}
           data={myPosts.posts}
           renderItem={({item}) => (
@@ -76,13 +79,13 @@ export default function MyPageScreen() {
                 });
               }}>
               <View style={styles.imageWrapper}>
-                <MyPageImageCard {...item} />
+                <Image />
               </View>
             </TouchableOpacity>
           )}
           numColumns={2}
           windowSize={6}
-        />
+        /> */}
       </View>
     </View>
   );
