@@ -22,24 +22,32 @@ import HmmIcon from '../imgs/hmm.png';
 const {width, height} = Dimensions.get('window');
 
 export default function PostScreen() {
-  const route = useRoute();
+  const post = {
+    title: 'test',
+    hashtags: ['test'],
+    description: 'test',
+    isOwner: true,
+    likeCount: 0,
+    dislikeCount: 0,
+    imgs: [
+      'https://storage.googleapis.com/omoji-bucket/img/5-24914b2c-95b1-4db0-a5e4-fa823ce5a4ac.jpg',
+    ],
+  };
+  const [commentText, setCommentText] = useState('');
+  // const route = useRoute();
   // const {id} = route.params;
 
-  // useQuery get Post by id http async method is requestGetPost
-  const {data: post, isLoading} = useQuery(['post', 1], async () => {
-    // const {data} = await requestGetPost(id);
-    return Promise.resolve({
-      title: 'test',
-      hashtags: ['test', 'test'],
-      description: 'test',
-      isOwner: true,
-    });
-  });
+  // const {data: post, isLoading} = useQuery(['post', id], async () => {
+  //   const {data} = await requestGetPost(id);
+  //   return data;
+  // });
 
-  const [commentValue, setCommentValue] = useState('');
-
-  if (isLoading) {
-    return <View />;
+  if (false) {
+    return (
+      <View>
+        <Text>loading</Text>
+      </View>
+    );
   }
 
   return (
@@ -51,9 +59,6 @@ export default function PostScreen() {
             <Tag text={tag} />
           ))}
         </View>
-        <View style={styles.contentContainer}>
-          <Text style={styles.content}>{post.description}</Text>
-        </View>
 
         {post.isOwner && (
           <View
@@ -61,6 +66,7 @@ export default function PostScreen() {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-around',
+              marginTop: 32,
             }}>
             <View style={styles.GoodHmmButton}>
               <Image source={GoodIcon} style={styles.GoodHmmImage} />
@@ -73,14 +79,19 @@ export default function PostScreen() {
           </View>
         )}
 
-        {/* <View style={styles.commentContainer}>
+        <View style={styles.contentContainer}>
+          <Text style={styles.content}>{post.description}</Text>
+        </View>
+
+        <View style={styles.commentContainer}>
           <Text style={styles.commentTitle}>댓글</Text>
-          {comments.map(comment => {
+          {/* TODO: 댓글 받아오기 */}
+          {/* {comments.map(comment => {
             return (
               <Comment nickname={comment.nickname} comment={comment.comment} />
             );
-          })}
-        </View> */}
+          })} */}
+        </View>
       </ScrollView>
       {/* <View style={styles.inputContainer}>
         <Image
@@ -91,8 +102,8 @@ export default function PostScreen() {
           style={styles.input}
           placeholder="댓글쓰기..."
           placeholderTextColor="#fff"
-          value={commentValue}
-          onChangeText={text => setCommentValue(text)}
+          value={commentText}
+          onChangeText={text => setCommentText(text)}
         />
         <Text style={styles.GoodHmmButtonText}>게시</Text>
       </View> */}
@@ -101,13 +112,7 @@ export default function PostScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 18,
-    paddingRight: 16,
-    paddingBottom: 18,
-    paddingLeft: 16,
-    height: height - 250,
-  },
+  container: {},
   title: {
     fontSize: 21,
     color: '#fff',
