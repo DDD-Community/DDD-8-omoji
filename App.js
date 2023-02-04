@@ -6,7 +6,7 @@ import CustomIcon from './src/component/CustomIcon';
 import {UploadScreen} from './src/screens/UploadScreen';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {MyPageScreen} from './src/screens/MyPageScreen';
+import MyPageScreen from './src/screens/MyPageScreen';
 import 'react-native-gesture-handler';
 import {LoginScreen} from './src/screens/LoginScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
