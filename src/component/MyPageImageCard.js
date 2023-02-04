@@ -1,20 +1,21 @@
 import {
-  ImageBackground,
   Dimensions,
-  StyleSheet,
-  View,
-  Text,
   Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import React from 'react';
 import GoodIcon from '../imgs/mypage-good.png';
 import HmmIcon from '../imgs/mypage-hmm.png';
+
 const {width} = Dimensions.get('window');
 
 const MyPageImageCard = ({image, likeCount, dislikeCount}) => {
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.imageBackground} source={image}>
+      <ImageBackground style={styles.imageBackground} source={{uri: image}}>
         <View style={styles.innerContainer}>
           <Image source={GoodIcon} style={styles.icon} />
           <Text style={styles.text}>{likeCount}</Text>

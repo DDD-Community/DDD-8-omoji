@@ -1,16 +1,15 @@
 import {
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
   Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
   TouchableOpacity,
-  Image,
+  View,
 } from 'react-native';
 import MyPageImageCard from '../component/MyPageImageCard';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
+import {useQuery} from '@tanstack/react-query';
 import {requestGetMyPosts} from '../api/posts';
 import {useRecoilState} from 'recoil';
 import {userState} from '../atom/loginAtoms';
@@ -66,9 +65,7 @@ export default function MyPageScreen() {
       </View>
 
       <View>
-        <Text>{JSON.stringify(myPosts)}</Text>
-        <Image source={myPosts.posts.imgs[0]} />
-        {/* <FlatList
+        <FlatList
           keyExtractor={item => item.id}
           data={myPosts.posts}
           renderItem={({item}) => (
@@ -79,13 +76,17 @@ export default function MyPageScreen() {
                 });
               }}>
               <View style={styles.imageWrapper}>
-                <Image />
+                <MyPageImageCard
+                  image={item.imgs[0]}
+                  likeCount={item.likeCount}
+                  dislikeCount={item.dislikeCount}
+                />
               </View>
             </TouchableOpacity>
           )}
           numColumns={2}
           windowSize={6}
-        /> */}
+        />
       </View>
     </View>
   );

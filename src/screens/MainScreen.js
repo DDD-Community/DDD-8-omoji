@@ -18,6 +18,7 @@ export function MainScreen() {
       try {
         const {data} = await requestGetPosts();
         setPosts(data);
+        console.log(data);
       } catch (e) {
         console.log(e);
       }
