@@ -123,9 +123,9 @@ export default function App() {
                 headerShown: false,
                 headerMode: 'none',
               }}>
-              <Stack.Screen name="홈" component={PostScreen} />
-              <Stack.Screen name="로그인" component={PostScreen} />
-              <Stack.Screen name="둘러보기" component={PostScreen} />
+              <Stack.Screen name="홈" component={HomeTabs} />
+              <Stack.Screen name="로그인" component={LoginScreen} />
+              <Stack.Screen name="둘러보기" component={PreviewScreen} />
               <Stack.Screen name="게시글" component={PostScreen} />
             </Stack.Navigator>
           </NavigationContainer>
