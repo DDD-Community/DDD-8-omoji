@@ -26,8 +26,8 @@ export default function MyPageScreen() {
     error,
   } = useQuery({
     queryKey: ['myPosts'],
-    queryFn: async ({pageParam = 5}) => {
-      const {data} = await requestGetMyPosts(pageParam, pageParam + 6);
+    queryFn: async ({pageParam = 0}) => {
+      const {data} = await requestGetMyPosts(pageParam, pageParam + 5);
       return data;
     },
   });
@@ -65,11 +65,9 @@ export default function MyPageScreen() {
       </View>
 
       <View>
-        <Text>{JSON.stringify(myPosts)}</Text>
         <FlatList
           keyExtractor={item => item.id}
           data={myPosts}
-          scrollEnabled={true}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
