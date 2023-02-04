@@ -114,12 +114,12 @@ export function MyPage() {
   return (
     <View>
       <View style={{paddingTop: 16, paddingLeft: 20, paddingBottom: 18}}>
-        <Text style={{fontWeight: 700, fontSize: 24, color: '#fff'}}>
+        <Text style={{fontWeight: '700', fontSize: 24, color: '#fff'}}>
           닉네임
         </Text>
         <Text
           style={{
-            fontWeight: 400,
+            fontWeight: '400',
             fontSize: 14,
             color: '#858585',
             marginTop: 8,
