@@ -14,6 +14,11 @@ import {RecoilRoot} from 'recoil';
 import SplashScreen from 'react-native-splash-screen';
 import PreviewScreen from './src/screens/PreviewScreen';
 import EncryptedStorage from 'react-native-encrypted-storage';
+import PostScreen from './src/screens/PostScreen';
+
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export const LOGIN_TOKEN_KEY = 'LOGIN_TOKEN_KEY';
 const Tab = createBottomTabNavigator();
@@ -106,8 +111,8 @@ export default function App() {
   };
 
   return (
-    <RecoilRoot>
-      <>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
         <SafeAreaProvider style={styles.safeAreaView}>
           <NavigationContainer
             theme={NavigationContainerTheme}
@@ -118,16 +123,17 @@ export default function App() {
                 headerShown: false,
                 headerMode: 'none',
               }}>
-              <Stack.Screen name="홈" component={HomeTabs} />
-              <Stack.Screen name="로그인" component={LoginScreen} />
-              <Stack.Screen name="둘러보기" component={PreviewScreen} />
+              <Stack.Screen name="홈" component={PostScreen} />
+              <Stack.Screen name="로그인" component={PostScreen} />
+              <Stack.Screen name="둘러보기" component={PostScreen} />
+              <Stack.Screen name="게시글" component={PostScreen} />
             </Stack.Navigator>
           </NavigationContainer>
 
           <UploadScreen show={showBottomSheet} onOuterClick={hide} />
         </SafeAreaProvider>
-      </>
-    </RecoilRoot>
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
 
