@@ -1,43 +1,46 @@
 import {View, Image} from 'react-native';
 import React, {useState} from 'react';
-import LookAround1 from '../imgs/lookAround1.png';
-import LookAround2 from '../imgs/lookAround2.png';
-import LookAround3 from '../imgs/lookAround3.png';
+import Preview1 from '../imgs/preview1.png';
+import Preview2 from '../imgs/preview2.png';
+import Preview3 from '../imgs/preview3.png';
 import {Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('window');
 
 const PreviewScreen = () => {
-  const [lookAround, setLookAround] = useState(LookAround1);
+  const [preview, setPreview] = useState(Preview1);
   const [step, setStep] = useState(0);
   const navigation = useNavigation();
+  const instes = useSafeAreaInsets();
   return (
-    <View>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => {
-          if (step === 0) {
-            setLookAround(LookAround2);
-            setStep(1);
-          } else if (step === 1) {
-            setLookAround(LookAround3);
-            setStep(2);
-          } else if (step === 2) {
-            navigation.navigate('로그인');
-          }
-        }}>
-        <Image source={lookAround} style={{height: '100%', width}} />
-      </TouchableOpacity>
-    </View>
+    <SafeAreaProvider>
+      <View style={{paddingTop: instes.top}}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => {
+            if (step === 0) {
+              setPreview(Preview2);
+              setStep(1);
+            } else if (step === 1) {
+              setPreview(Preview3);
+              setStep(2);
+            } else if (step === 2) {
+              navigation.navigate('로그인');
+            }
+          }}>
+          <Image source={preview} style={{height: '100%', width}} />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaProvider>
   );
 };
 
 const styles = StyleSheet.create({
-  hidden: {
-    width: 0,
-    height: 0,
-  },
+  safeAreaView: {},
 });
-
 export default PreviewScreen;
