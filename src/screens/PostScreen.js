@@ -55,8 +55,8 @@ export default function PostScreen() {
       <ScrollView style={styles.container}>
         <Text style={styles.title}>{post.title}</Text>
         <View style={styles.tagContainer}>
-          {post.hashtags.map(tag => (
-            <Tag text={tag} />
+          {post.hashtags.map((tag, idx) => (
+            <Tag text={tag} key={idx} />
           ))}
         </View>
 
