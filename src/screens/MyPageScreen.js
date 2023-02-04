@@ -9,7 +9,7 @@ import {
 import MyPageImageCard from '../component/MyPageImageCard';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {useInfiniteQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
 import {requestGetMyPosts} from '../api/posts';
 import {useRecoilState} from 'recoil';
 import {userState} from '../atom/loginAtoms';
@@ -24,10 +24,10 @@ export default function MyPageScreen() {
     data: myPosts,
     isLoading,
     error,
-  } = useInfiniteQuery({
+  } = useQuery({
     queryKey: ['myPosts'],
-    queryFn: async () => {
-      const {data} = await requestGetMyPosts(0, 5);
+    queryFn: async ({pageParam = 5}) => {
+      const {data} = await requestGetMyPosts(pageParam, pageParam + 6);
       return data;
     },
   });
@@ -65,6 +65,7 @@ export default function MyPageScreen() {
       </View>
 
       <View>
+        <Text>{JSON.stringify(myPosts)}</Text>
         <FlatList
           keyExtractor={item => item.id}
           data={myPosts}
