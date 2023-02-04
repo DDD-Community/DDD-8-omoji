@@ -1,6 +1,5 @@
 import {
   Alert,
-  Button,
   Image,
   Linking,
   Pressable,
@@ -8,11 +7,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import {useLayoutEffect, useState} from 'react';
-import CustomIcon from '../component/CustomIcon';
+import {useLayoutEffect} from 'react';
 import {requestGetNaverLogin} from '../api/auth';
-import {WebView} from 'react-native-webview';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
+import NaverLogin from '@react-native-seoul/naver-login';
 
 export function LoginScreen({navigation}) {
   useLayoutEffect(() => {
@@ -21,6 +19,44 @@ export function LoginScreen({navigation}) {
       tabBarStyle: {display: 'none'},
     });
   }, [navigation]);
+  const consumerKey = 'PLY4vjldHD_7JiBLOTRk';
+  const consumerSecret = 'fhdrFDOJGZ';
+  const appName = 'omoji';
+  const serviceUrlScheme = 'omoji';
+
+  const login = async () => {
+    const {failureResponse, successResponse} = await NaverLogin.login({
+      appName,
+      consumerKey,
+      consumerSecret,
+      serviceUrlScheme,
+    });
+    console.log(failureResponse, successResponse);
+    // setSuccessResponse(successResponse);
+    // setFailureResponse(failureResponse);
+  };
+
+  const logout = async () => {
+    try {
+      await NaverLogin.logout();
+      // setSuccessResponse(undefined);
+      // setFailureResponse(undefined);
+      // setGetProfileRes(undefined);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const deleteToken = async () => {
+    try {
+      await NaverLogin.deleteToken();
+      // setSuccessResponse(undefined);
+      // setFailureResponse(undefined);
+      // setGetProfileRes(undefined);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const onLogin = async () => {
     try {
@@ -87,7 +123,17 @@ export function LoginScreen({navigation}) {
       </View>
       <View>
         <Pressable style={styles.loginContainer}>
-          <Text style={styles.loginText} onPress={onLogin}>
+          <Text style={styles.loginText} onPress={deleteToken}>
+            토근 제거
+          </Text>
+        </Pressable>
+        <Pressable style={styles.loginContainer}>
+          <Text style={styles.loginText} onPress={logout}>
+            로그아웃
+          </Text>
+        </Pressable>
+        <Pressable style={styles.loginContainer}>
+          <Text style={styles.loginText} onPress={login}>
             네이버로 시작하기
           </Text>
         </Pressable>

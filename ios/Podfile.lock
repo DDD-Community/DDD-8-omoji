@@ -80,6 +80,7 @@ PODS:
   - lottie-react-native (5.1.4):
     - lottie-ios (~> 3.4.0)
     - React-Core
+  - naveridlogin-sdk-ios (4.1.5)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -381,6 +382,9 @@ PODS:
     - React-Core
   - RNInAppBrowser (3.7.0):
     - React-Core
+  - RNNaverLogin (3.0.0-rc.1):
+    - naveridlogin-sdk-ios (~> 4.1.5)
+    - React
   - RNReanimated (2.14.1):
     - DoubleConversion
     - FBLazyVector
@@ -487,6 +491,7 @@ DEPENDENCIES:
   - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
+  - "RNNaverLogin (from `../node_modules/@react-native-seoul/naver-login`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -506,6 +511,7 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - libevent
+    - naveridlogin-sdk-ios
     - OpenSSL-Universal
     - SocketRocket
     - TLPhotoPicker
@@ -598,6 +604,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNInAppBrowser:
     :path: "../node_modules/react-native-inappbrowser-reborn"
+  RNNaverLogin:
+    :path: "../node_modules/@react-native-seoul/naver-login"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -628,6 +636,7 @@ SPEC CHECKSUMS:
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: 69495122151a378fdc7d1bb4c5930347e37baf1f
   lottie-react-native: b702fab740cdb952a8e2354713d3beda63ff97b0
+  naveridlogin-sdk-ios: 4351fe7162cd6b8b6dbb37bd7cc205304fa1d889
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
   RCTRequired: e1866f61af7049eb3d8e08e8b133abd38bc1ca7a
@@ -664,6 +673,7 @@ SPEC CHECKSUMS:
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
   RNInAppBrowser: e36d6935517101ccba0e875bac8ad7b0cb655364
+  RNNaverLogin: 21bf8065f8e0fca9f5502d0fc81f7967a06d858c
   RNReanimated: 8125b2324ba03108136ab5dd506fc49b2454da24
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
