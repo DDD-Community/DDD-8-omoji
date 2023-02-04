@@ -59,11 +59,11 @@ export default function PostScreen() {
             }}>
             <View style={styles.GoodHmmButton}>
               <Image source={GoodIcon} style={styles.GoodHmmImage} />
-              <Text style={styles.GoodHmmButtonText}>3000</Text>
+              <Text style={styles.GoodHmmButtonText}>{post.likeCount}</Text>
             </View>
             <View style={styles.GoodHmmButton}>
               <Image source={HmmIcon} style={styles.GoodHmmImage} />
-              <Text style={styles.GoodHmmButtonText}>3000</Text>
+              <Text style={styles.GoodHmmButtonText}>{post.dislikeCount}</Text>
             </View>
           </View>
         )}
