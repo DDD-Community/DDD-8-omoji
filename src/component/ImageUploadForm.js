@@ -3,20 +3,13 @@ import CustomIcon from './CustomIcon';
 import {useRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
 
-interface Props {
-  title: string;
-  imgs: any;
-  description?: string;
-  onSubmit: () => void;
-}
-
 const TITLE_MAX_LENGTH = 38;
 const CONTENT_MAX_LENGTH = 100;
 
 export function ImageUploadForm() {
   const [form, setForm] = useRecoilState(uploadFormState);
 
-  const onChangeText = (prop: string) => (value: string) => {
+  const onChangeText = prop => value => {
     setForm({
       ...form,
       [prop]: value,
