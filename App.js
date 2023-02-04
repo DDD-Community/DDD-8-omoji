@@ -52,7 +52,7 @@ export default function App() {
   const [showBottomSheet, setShowBottomSheet] = React.useState(false);
   useEffect(() => {
     const getTokenAndRefresh = async () => {
-      EncryptedStorage.clear();
+      // EncryptedStorage.clear();
       const token = await EncryptedStorage.getItem(LOGIN_TOKEN_KEY);
       setIsLoggedIn(!!token);
       navigationRef.current?.navigate(token ? '홈' : '로그인');

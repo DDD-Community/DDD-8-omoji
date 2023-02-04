@@ -9,13 +9,11 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-  config => {
-    // const token = EncryptedStorage.getItem(LOGIN_TOKEN_KEY);
-    // console.log(config, token, !!token);
-    // if (!!token) {
-    //   config.headers['Authorization'] = `Bearer ${token}`;
-    // }
-    config.headers['Content-Type'] = 'application/json';
+  async config => {
+    const token = await EncryptedStorage.getItem(LOGIN_TOKEN_KEY);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   error => {

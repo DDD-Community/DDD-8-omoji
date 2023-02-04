@@ -87,7 +87,6 @@ export function ImageUploadForm() {
           />
         </View>
       </View>
-      {/*<Button onPress={() => onSubmit(form)} title="Submit"></Button>*/}
     </View>
   );
 }

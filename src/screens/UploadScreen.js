@@ -56,8 +56,24 @@ export function UploadScreen({show, onOuterClick}) {
   const bottom = useAnimatedBottom(show, screenHeight);
   const onClickUpload = () => {
     const formData = new FormData();
-    formData.append('title', 'title');
-    formData.append('description', description);
+    console.log(form);
+    formData.append('title', form.title);
+    formData.append('description', form.description);
+    form.imgs.forEach(img =>
+      formData.append('imgs', {
+        name: img.name,
+        type: img.type,
+        uri: Platform.OS === 'ios' ? img.uri.replace('file://', '') : img.url,
+      }),
+    );
+    requestPostPosts(formData)
+      .then(res => {
+        console.log('uploadRes', res);
+      })
+      .catch(e => {
+        console.log('uploadError', e);
+        throw new Error(e);
+      });
     return onOuterClick();
   };
 
@@ -89,8 +105,8 @@ export function UploadScreen({show, onOuterClick}) {
             </Text>
           </Pressable>
         </View>
-        <ImageUploader></ImageUploader>
-        <ImageUploadForm></ImageUploadForm>
+        <ImageUploader />
+        <ImageUploadForm />
       </View>
     </Animated.View>
   );
