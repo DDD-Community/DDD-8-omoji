@@ -11,15 +11,15 @@ import GoodIcon from '../imgs/mypage-good.png';
 import HmmIcon from '../imgs/mypage-hmm.png';
 const {width} = Dimensions.get('window');
 
-const MyPageImageCard = ({image}) => {
+const MyPageImageCard = ({image, likeCount, dislikeCount}) => {
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.imageBackground} source={image}>
         <View style={styles.innerContainer}>
           <Image source={GoodIcon} style={styles.icon} />
-          <Text style={styles.text}>2000</Text>
+          <Text style={styles.text}>{likeCount}</Text>
           <Image source={HmmIcon} style={styles.icon} />
-          <Text style={styles.text}>2000</Text>
+          <Text style={styles.text}>{dislikeCount}</Text>
         </View>
       </ImageBackground>
     </View>
