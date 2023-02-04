@@ -40,6 +40,14 @@ export default function MyPageScreen() {
     );
   }
 
+  if (error) {
+    return (
+      <View>
+        <Text>{JSON.stringify(error)}</Text>
+      </View>
+    );
+  }
+
   return (
     <View>
       <View style={{paddingTop: 16, paddingLeft: 20, paddingBottom: 18}}>
