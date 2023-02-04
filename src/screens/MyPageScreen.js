@@ -67,7 +67,7 @@ export default function MyPageScreen() {
       <View>
         <FlatList
           keyExtractor={item => item.id}
-          data={myPosts}
+          data={myPosts.posts}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
