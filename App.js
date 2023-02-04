@@ -97,7 +97,7 @@ export default function App() {
             component={MyPageScreen}
             options={{
               tabBarIcon: ({color}) => (
-                <CustomIcon name="iconMyPageScreen" color={color} size={35} />
+                <CustomIcon name="iconMyPage" color={color} size={35} />
               ),
             }}
           />
