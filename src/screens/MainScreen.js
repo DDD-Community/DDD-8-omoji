@@ -1,20 +1,17 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import CardStack, {Card} from 'react-native-card-stack-swiper';
 import {ImageCard} from '../component/ImageCard';
 import {EvaluateButton} from '../component/EvaluateButton';
 import GoodOrBadLottie from '../component/GoodOrBadLottie';
-import {useEffect} from 'react';
-import {requestGetMainPosts} from '../api/posts';
 
 const {width, height} = Dimensions.get('window');
 
 export function MainScreen() {
   const [activeGood, setActiveGood] = React.useState(false);
   const [activeBad, setActiveBad] = React.useState(false);
-  useEffect(() => {
-    requestGetMainPosts(0, 1).then(res => console.log(res));
-  });
+  useEffect(() => {});
   return (
     <View style={styles.container}>
       <CardStack
@@ -25,7 +22,7 @@ export function MainScreen() {
         onSwipedLeft={() => {
           console.log('left');
         }}>
-        <ImageCard style={{flex: 1}}></ImageCard>
+        <ImageCard style={{flex: 1}} />
         <Card style={[styles.card, {backgroundColor: 'red'}]}>
           <Text style={styles.label}>B</Text>
         </Card>

@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MainScreen} from './src/screens/MainScreen';
 import CustomIcon from './src/component/CustomIcon';
 import {UploadScreen} from './src/screens/UploadScreen';
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {MyPage} from './src/screens/MyPage';
 import 'react-native-gesture-handler';
@@ -13,8 +13,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecoilRoot} from 'recoil';
 import SplashScreen from 'react-native-splash-screen';
 import PreviewScreen from './src/screens/PreviewScreen';
+import EncryptedStorage from 'react-native-encrypted-storage';
+
+export const LOGIN_TOKEN_KEY = 'LOGIN_TOKEN_KEY';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+export const navigationRef = React.createRef();
+
 const NavigationContainerTheme = {
   dart: true,
   colors: {
@@ -36,13 +41,21 @@ const NavigatorScreenOptions = {
     shadowRadius: 4,
   },
 };
-const {width, height} = Dimensions.get('window');
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [showBottomSheet, setShowBottomSheet] = React.useState(false);
   useEffect(() => {
+    const getTokenAndRefresh = async () => {
+      EncryptedStorage.clear();
+      const token = await EncryptedStorage.getItem(LOGIN_TOKEN_KEY);
+      setIsLoggedIn(!!token);
+      navigationRef.current?.navigate(token ? '홈' : '로그인');
+      console.log(token, !!token);
+    };
+    getTokenAndRefresh();
     SplashScreen.hide();
   }, []);
-  const [showBottomSheet, setShowBottomSheet] = React.useState(false);
 
   const HomeTabs = () => {
     return (
@@ -96,16 +109,17 @@ export default function App() {
     <RecoilRoot>
       <>
         <SafeAreaProvider style={styles.safeAreaView}>
-          <NavigationContainer theme={NavigationContainerTheme}>
+          <NavigationContainer
+            theme={NavigationContainerTheme}
+            ref={navigationRef}>
             <Stack.Navigator
-              initialRouteName="로그인"
               screenOptions={{
                 ...NavigatorScreenOptions,
                 headerShown: false,
                 headerMode: 'none',
               }}>
-              <Stack.Screen name="로그인" component={LoginScreen} />
               <Stack.Screen name="홈" component={HomeTabs} />
+              <Stack.Screen name="로그인" component={LoginScreen} />
               <Stack.Screen name="둘러보기" component={PreviewScreen} />
             </Stack.Navigator>
           </NavigationContainer>

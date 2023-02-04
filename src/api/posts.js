@@ -27,3 +27,7 @@ export const requestGetMainPosts = async (start, limit) => {
 export const requestGetMyPosts = async (start, limit) => {
   return axios.get(`/posts/profile?start=${start}&limit=${limit}`);
 };
+
+export const requestGetPosts = async () => {
+  return axios.get('/evaluate', {id: 0});
+};

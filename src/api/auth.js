@@ -1,7 +1,11 @@
 import axios from './core';
 
-export const requestGetNaverLogin = async () => {
-  return axios.get('/auth/login/naver');
+export const requestGetNaverLogin = async token => {
+  return axios.post('/auth/naver', null, {
+    headers: {
+      socialToken: `Bearer ${token}`,
+    },
+  });
 };
 
 export const requestPostLogout = async () => {

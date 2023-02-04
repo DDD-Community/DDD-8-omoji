@@ -1,18 +1,18 @@
-import {
-  Alert,
-  Image,
-  Linking,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import {useLayoutEffect} from 'react';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import React, {useLayoutEffect, useState} from 'react';
 import {requestGetNaverLogin} from '../api/auth';
-import InAppBrowser from 'react-native-inappbrowser-reborn';
 import NaverLogin from '@react-native-seoul/naver-login';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {LOGIN_TOKEN_KEY} from '../../App';
+import {userState} from '../atom/loginAtoms';
+import {useRecoilState} from 'recoil';
 
 export function LoginScreen({navigation}) {
+  const [success, setSuccessResponse] = useState();
+  const [failure, setFailureResponse] = useState();
+  const [profileRes, setProfileRes] = useState();
+  const [user, setUser] = useRecoilState(userState);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -31,17 +31,25 @@ export function LoginScreen({navigation}) {
       consumerSecret,
       serviceUrlScheme,
     });
-    console.log(failureResponse, successResponse);
-    // setSuccessResponse(successResponse);
-    // setFailureResponse(failureResponse);
+    if (successResponse) {
+      try {
+        const {data} = await requestGetNaverLogin(successResponse.accessToken);
+        setSuccessResponse(successResponse);
+        await EncryptedStorage.setItem(LOGIN_TOKEN_KEY, data.accessToken);
+        navigation.navigate('홈');
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setFailureResponse(failureResponse);
+    }
   };
 
   const logout = async () => {
     try {
       await NaverLogin.logout();
-      // setSuccessResponse(undefined);
-      // setFailureResponse(undefined);
-      // setGetProfileRes(undefined);
+      setSuccessResponse(undefined);
+      setFailureResponse(undefined);
     } catch (e) {
       console.error(e);
     }
@@ -50,57 +58,10 @@ export function LoginScreen({navigation}) {
   const deleteToken = async () => {
     try {
       await NaverLogin.deleteToken();
-      // setSuccessResponse(undefined);
-      // setFailureResponse(undefined);
-      // setGetProfileRes(undefined);
+      setSuccessResponse(undefined);
+      setFailureResponse(undefined);
     } catch (e) {
       console.error(e);
-    }
-  };
-
-  const onLogin = async () => {
-    try {
-      const res = await requestGetNaverLogin();
-      console.log('response', res.responseURL);
-      const url = res.request.responseURL;
-      if (await InAppBrowser.isAvailable()) {
-        const result = await InAppBrowser.open(url, {
-          // iOS Properties
-          dismissButtonStyle: 'cancel',
-          preferredControlTintColor: 'white',
-          readerMode: false,
-          animated: true,
-          modalPresentationStyle: 'fullScreen',
-          modalTransitionStyle: 'coverVertical',
-          modalEnabled: true,
-          enableBarCollapsing: false,
-          // Android Properties
-          showTitle: true,
-          secondaryToolbarColor: 'black',
-          navigationBarColor: 'black',
-          navigationBarDividerColor: 'white',
-          enableUrlBarHiding: true,
-          enableDefaultShare: true,
-          forceCloseOnRedirection: false,
-          // Specify full animation resource identifier(package:anim/name)
-          // or only resource name(in case of animation bundled with app).
-          animations: {
-            startEnter: 'slide_in_right',
-            startExit: 'slide_out_left',
-            endEnter: 'slide_in_left',
-            endExit: 'slide_out_right',
-          },
-          headers: {
-            'my-custom-header': 'my custom header value',
-          },
-        });
-        // await this.sleep(800);
-        Alert.alert(JSON.stringify(result));
-      } else {
-        Linking.openURL(url);
-      }
-    } catch (e) {
-      console.log('error', e);
     }
   };
 

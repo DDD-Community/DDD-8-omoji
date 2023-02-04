@@ -1,12 +1,4 @@
-import {
-  Button,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
-import {useState} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import CustomIcon from './CustomIcon';
 import {useRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
@@ -105,27 +97,27 @@ const styles = StyleSheet.create({
     marginBottom: 36,
   },
   formTitle: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 18,
     marginBottom: 16,
-    fontWeight: "700"
+    fontWeight: '700',
   },
   formInputArea: {
-    backgroundColor: "#282828",
+    backgroundColor: '#282828',
     borderRadius: 8,
     padding: 12,
   },
   input: {
     padding: 0,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
   },
   formTextCountContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-end",
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
   formTextCount: {
-    alignSelf: "flex-end",
-    color: "#8F8F8F",
+    alignSelf: 'flex-end',
+    color: '#8F8F8F',
     fontSize: 12,
   },
 });
