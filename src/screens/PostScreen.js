@@ -22,27 +22,16 @@ import HmmIcon from '../imgs/hmm.png';
 const {width, height} = Dimensions.get('window');
 
 export default function PostScreen() {
-  const post = {
-    title: 'test',
-    hashtags: ['test'],
-    description: 'test',
-    isOwner: true,
-    likeCount: 0,
-    dislikeCount: 0,
-    imgs: [
-      'https://storage.googleapis.com/omoji-bucket/img/5-24914b2c-95b1-4db0-a5e4-fa823ce5a4ac.jpg',
-    ],
-  };
   const [commentText, setCommentText] = useState('');
-  // const route = useRoute();
-  // const {id} = route.params;
+  const route = useRoute();
+  const {id} = route.params;
 
-  // const {data: post, isLoading} = useQuery(['post', id], async () => {
-  //   const {data} = await requestGetPost(id);
-  //   return data;
-  // });
+  const {data: post, isLoading} = useQuery(['post', id], async () => {
+    const {data} = await requestGetPost(id);
+    return data;
+  });
 
-  if (false) {
+  if (isLoading) {
     return (
       <View>
         <Text>loading</Text>
