@@ -5,16 +5,12 @@ import {
   FlatList,
   Dimensions,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import MyPageImageCard from '../component/MyPageImageCard';
 import testImage1 from '../../assets/mock-images/image01.png';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+
 const data = [
   {
     image: testImage1,
@@ -108,7 +104,7 @@ const data = [
 
 const {width} = Dimensions.get('window');
 
-export function MyPage() {
+export default function MyPageScreen() {
   const navigator = useNavigation();
 
   return (
@@ -136,8 +132,9 @@ export function MyPage() {
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
-                // TODO: 게시글 이동
-                navigator.navigate('로그인');
+                navigator.navigate('게시글', {
+                  id: item.id,
+                });
               }}>
               <View style={styles.imageWrapper}>
                 <MyPageImageCard image={item.image} />

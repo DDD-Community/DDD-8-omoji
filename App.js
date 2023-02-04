@@ -6,7 +6,7 @@ import CustomIcon from './src/component/CustomIcon';
 import {UploadScreen} from './src/screens/UploadScreen';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {MyPage} from './src/screens/MyPage';
+import {MyPageScreen} from './src/screens/MyPageScreen';
 import 'react-native-gesture-handler';
 import {LoginScreen} from './src/screens/LoginScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -94,10 +94,10 @@ export default function App() {
           />
           <Tab.Screen
             name="마이페이지"
-            component={MyPage}
+            component={MyPageScreen}
             options={{
               tabBarIcon: ({color}) => (
-                <CustomIcon name="iconMyPage" color={color} size={35} />
+                <CustomIcon name="iconMyPageScreen" color={color} size={35} />
               ),
             }}
           />
