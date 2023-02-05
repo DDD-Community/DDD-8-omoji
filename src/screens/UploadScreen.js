@@ -58,9 +58,16 @@ export function UploadScreen({show, onOuterClick}) {
   const [form] = useRecoilState(uploadFormState);
   const resetForm = useResetRecoilState(uploadFormState);
 
-  const {mutate} = useMutation(formData => {
-    return requestPostPosts(formData);
-  });
+  const {mutate} = useMutation(
+    formData => {
+      return requestPostPosts(formData);
+    },
+    {
+      onError: error => {
+        Alert.alert(error.message);
+      },
+    },
+  );
 
   const bottom = useAnimatedBottom(show, screenHeight);
 
