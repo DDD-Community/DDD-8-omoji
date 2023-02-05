@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Animated,
   Easing,
@@ -8,15 +8,18 @@ import {
   Text,
   useWindowDimensions,
   View,
+  Alert,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ImageUploader} from '../component/ImageUploader';
 import {ImageUploadForm} from '../component/ImageUploadForm';
 import CustomIcon from '../component/CustomIcon';
-import {useRecoilState} from 'recoil';
+import {useRecoilState, useResetRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
 import {requestPostPosts} from '../api/posts';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useMutation} from '@tanstack/react-query';
+
 const DEFAULT_HEIGHT = 300;
 
 function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
@@ -49,12 +52,37 @@ function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
 }
 
 export function UploadScreen({show, onOuterClick}) {
+  const [images, setImages] = useState([]);
   const {height: screenHeight} = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const [form, setForm] = useRecoilState(uploadFormState);
+  const [form] = useRecoilState(uploadFormState);
+  const resetForm = useResetRecoilState(uploadFormState);
+
+  const {mutate} = useMutation(formData => {
+    return requestPostPosts(formData);
+  });
 
   const bottom = useAnimatedBottom(show, screenHeight);
+
+  function validateUpload() {
+    if (!images.length) {
+      Alert.alert('이미지를 선택해주세요.');
+      return false;
+    }
+
+    if (!form.title) {
+      Alert.alert('제목을 입력해주세요.');
+      return false;
+    }
+
+    return true;
+  }
+
   const onClickUpload = () => {
+    if (!validateUpload()) {
+      return;
+    }
+
     const formData = new FormData();
     formData.append('title', form.title);
     formData.append('description', form.description);
@@ -66,14 +94,11 @@ export function UploadScreen({show, onOuterClick}) {
         uri: Platform.OS === 'ios' ? img.uri.replace('file://', '') : img.url,
       }),
     );
-    requestPostPosts(formData)
-      .then(res => {
-        console.log('uploadRes', res);
-      })
-      .catch(e => {
-        console.log('uploadError', e);
-        throw new Error(e);
-      });
+
+    mutate(formData);
+    resetForm();
+    setImages([]);
+
     return onOuterClick();
   };
 
@@ -106,7 +131,7 @@ export function UploadScreen({show, onOuterClick}) {
               </Text>
             </Pressable>
           </View>
-          <ImageUploader />
+          <ImageUploader images={images} setImages={setImages} />
           <ImageUploadForm />
         </View>
       </ScrollView>

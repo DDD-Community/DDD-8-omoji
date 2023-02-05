@@ -13,40 +13,33 @@ import CustomIcon from './CustomIcon';
 import {useRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
 
-export function ImageUploader() {
+export function ImageUploader({setImages, images}) {
   const [form, setForm] = useRecoilState(uploadFormState);
-  const [images, setImages] = useState([]);
-
   const openPicker = async () => {
-    try {
-      const response = await MultipleImagePicker.openPicker({
-        selectedAssets: form.imgs,
-        isExportThumbnail: false,
-        usedCameraButton: false,
-        isCrop: false,
-        isCropCircle: false,
-        selectedColor: '#AF68FF',
-      });
-      console.log('response: ', response);
-      setImages(response);
-      const imgs = response.map(res => ({
-        uri: res.path,
-        type: res.mime,
-        name: res.fileName,
-      }));
-      setForm({...form, imgs});
-    } catch (e) {
-      console.log(e.code, e.message);
-    }
+    const response = await MultipleImagePicker.openPicker({
+      selectedAssets: form.imgs,
+      isExportThumbnail: false,
+      usedCameraButton: false,
+      isCrop: false,
+      isCropCircle: false,
+      selectedColor: '#AF68FF',
+    });
+    setImages(response);
+    const imgs = response.map(res => ({
+      uri: res.path,
+      type: res.mime,
+      name: res.fileName,
+    }));
+    setForm({...form, imgs});
   };
 
   const onDelete = value => {
-    // const data = images.filter(
-    //   item =>
-    //     item?.localIdentifier &&
-    //     item?.localIdentifier !== value?.localIdentifier,
-    // );
-    // setImages(data);
+    const data = images.filter(
+      item =>
+        item?.localIdentifier &&
+        item?.localIdentifier !== value?.localIdentifier,
+    );
+    setImages(data);
   };
 
   const renderItem = ({item, index}) => {
