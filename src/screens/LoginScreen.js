@@ -20,10 +20,10 @@ export function LoginScreen({navigation}) {
       tabBarStyle: {display: 'none'},
     });
   }, [navigation]);
-  const consumerKey = 'PLY4vjldHD_7JiBLOTRk';
-  const consumerSecret = 'fhdrFDOJGZ';
-  const appName = 'omoji';
-  const serviceUrlScheme = 'omoji';
+  const consumerKey = Config.NAVER_APP_KEY;
+  const consumerSecret = Config.NAVER_APP_SECRET_KEY;
+  const appName = Config.APP_NAME;
+  const serviceUrlScheme = Config.SERVICE_URL_SCHEME;
 
   const login = async () => {
     const {failureResponse, successResponse} = await NaverLogin.login({

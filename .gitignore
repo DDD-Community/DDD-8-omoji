@@ -64,7 +64,8 @@ buck-out
 /vendor/bundle/
 
 # environments
-env/
+.env
+.env.dev
 
 .eslintcache
 

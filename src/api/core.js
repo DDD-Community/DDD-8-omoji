@@ -3,7 +3,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {LOGIN_TOKEN_KEY} from '../../App';
 import Config from 'react-native-config';
 
-const BASE_URL = 'https://omoji-server-vo2dfmd2vq-du.a.run.app/api/v1';
+const BASE_URL = Config.BASE_URL;
 
 const instance = axios.create({
   baseURL: BASE_URL,
