@@ -16,6 +16,7 @@ import CustomIcon from '../component/CustomIcon';
 import {useRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
 import {requestPostPosts} from '../api/posts';
+import {ScrollView} from 'react-native-gesture-handler';
 const DEFAULT_HEIGHT = 300;
 
 function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
@@ -79,34 +80,36 @@ export function UploadScreen({show, onOuterClick}) {
   return (
     <Animated.View
       style={[styles.uploadScreen, {height: screenHeight, bottom}]}>
-      <View
-        style={[
-          styles.uploadScreenContainer,
-          {
-            paddingTop: insets.top,
-            paddingRight: insets.right + 16,
-            paddingBottom: insets.bottom,
-            paddingLeft: insets.left + 16,
-          },
-        ]}>
-        <View style={styles.uploadScreenHeader}>
-          <Pressable>
-            <CustomIcon
-              name="iconClose"
-              color={'#FFFFFF'}
-              size={18}
-              onPress={onOuterClick}
-            />
-          </Pressable>
-          <Pressable>
-            <Text style={styles.button} onPress={onClickUpload}>
-              완료
-            </Text>
-          </Pressable>
+      <ScrollView>
+        <View
+          style={[
+            styles.uploadScreenContainer,
+            {
+              paddingTop: insets.top,
+              paddingRight: insets.right + 16,
+              paddingBottom: insets.bottom,
+              paddingLeft: insets.left + 16,
+            },
+          ]}>
+          <View style={styles.uploadScreenHeader}>
+            <Pressable>
+              <CustomIcon
+                name="iconClose"
+                color={'#FFFFFF'}
+                size={18}
+                onPress={onOuterClick}
+              />
+            </Pressable>
+            <Pressable>
+              <Text style={styles.button} onPress={onClickUpload}>
+                완료
+              </Text>
+            </Pressable>
+          </View>
+          <ImageUploader />
+          <ImageUploadForm />
         </View>
-        <ImageUploader />
-        <ImageUploadForm />
-      </View>
+      </ScrollView>
     </Animated.View>
   );
 }
