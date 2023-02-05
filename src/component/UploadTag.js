@@ -1,12 +1,13 @@
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React, {useState} from 'react';
 
-export default function UploadTag({text}) {
+export default function UploadTag({text, onClick}) {
   const [clicked, setClicked] = useState(false);
   return (
     <Pressable
       onPress={() => {
         setClicked(!clicked);
+        onClick();
       }}>
       <View style={clicked ? styles.clickedUploadTag : styles.uploadTag}>
         <Text style={clicked ? styles.clickedText : styles.text}>{text}</Text>

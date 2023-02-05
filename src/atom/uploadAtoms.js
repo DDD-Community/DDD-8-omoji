@@ -6,5 +6,6 @@ export const uploadFormState = atom({
     title: '',
     imgs: [],
     description: '',
+    events: [],
   },
 });
