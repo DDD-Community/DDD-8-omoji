@@ -34,7 +34,7 @@ export function ImageCard({title, imgs}) {
     <View style={styles.container} onLayout={onLayout}>
       <Pressable style={styles.pressableContainer} onPress={onPress}>
         <Image
-          style={{width: 358, height: 638}}
+          style={{width: 358, height: 638, borderRadius: 10}}
           source={{
             uri: imgs?.[currentIndex],
           }}
@@ -53,12 +53,14 @@ export function ImageCard({title, imgs}) {
               flexDirection: 'column',
               width: '100%',
               padding: 20,
+              borderRadius: 10,
             }}>
             <View
               style={{
                 flexDirection: 'row',
                 width: '100%',
                 justifyContent: 'flex-start',
+                borderRadius: 10,
               }}>
               {imgs.map((item, i) => (
                 <View
@@ -73,7 +75,13 @@ export function ImageCard({title, imgs}) {
                 />
               ))}
             </View>
-            <Text style={{fontSize: 21, fontWeight: '700', marginTop: 32}}>
+            <Text
+              style={{
+                fontSize: 21,
+                fontWeight: '700',
+                marginTop: 32,
+                borderRadius: 10,
+              }}>
               {title}
             </Text>
           </View>
@@ -87,6 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
+    borderRadius: 10,
   },
   pressableContainer: {
     flex: 1,
@@ -102,8 +111,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: '100$%',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 10,
   },
   slide: {
     width: '18%',
