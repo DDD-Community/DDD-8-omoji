@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   Animated,
   Easing,
@@ -16,18 +16,17 @@ import CustomIcon from '../component/CustomIcon';
 import {useRecoilState} from 'recoil';
 import {uploadFormState} from '../atom/uploadAtoms';
 import {requestPostPosts} from '../api/posts';
-
 const DEFAULT_HEIGHT = 300;
 
 function useAnimatedBottom(show, height = DEFAULT_HEIGHT) {
-  const animatedValue = React.useRef(new Animated.Value(0));
+  const animatedValue = useRef(new Animated.Value(0));
 
   const bottom = animatedValue.current.interpolate({
     inputRange: [0, 1],
     outputRange: [-height, 0],
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (show) {
       Animated.timing(animatedValue.current, {
         toValue: 1,
@@ -56,7 +55,6 @@ export function UploadScreen({show, onOuterClick}) {
   const bottom = useAnimatedBottom(show, screenHeight);
   const onClickUpload = () => {
     const formData = new FormData();
-    console.log(form);
     formData.append('title', form.title);
     formData.append('description', form.description);
     form.imgs.forEach(img =>
@@ -118,8 +116,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     zIndex: 1,
-    // Here you can set a common style for all bottom sheets, or nothing if you
-    // want different designs
     backgroundColor: '#17171B',
     borderRadius: 16,
   },
