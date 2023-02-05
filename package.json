@@ -8,7 +8,9 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ios:dev": "react-native run-ios --scheme omojiDev",
+    "ios:prod": "react-native run-ios --scheme omoji"
   },
   "dependencies": {
     "@baronha/react-native-multiple-image-picker": "^0.4.13",

@@ -6,6 +6,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {LOGIN_TOKEN_KEY} from '../../App';
 import {userState} from '../atom/loginAtoms';
 import {useRecoilState} from 'recoil';
+import Config from 'react-native-config';
 
 export function LoginScreen({navigation}) {
   const [success, setSuccessResponse] = useState();
