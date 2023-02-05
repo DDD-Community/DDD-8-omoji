@@ -3,10 +3,10 @@ import React, {useLayoutEffect, useState} from 'react';
 import {requestGetNaverLogin} from '../api/auth';
 import NaverLogin from '@react-native-seoul/naver-login';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import {LOGIN_TOKEN_KEY} from '../../App';
 import {userState} from '../atom/loginAtoms';
 import {useRecoilState} from 'recoil';
 import Config from 'react-native-config';
+import {ACCESS_TOKEN_KEY} from '../api/core';
 
 export function LoginScreen({navigation}) {
   const [success, setSuccessResponse] = useState();
@@ -36,7 +36,7 @@ export function LoginScreen({navigation}) {
       try {
         const {data} = await requestGetNaverLogin(successResponse.accessToken);
         setSuccessResponse(successResponse);
-        await EncryptedStorage.setItem(LOGIN_TOKEN_KEY, data.accessToken);
+        await EncryptedStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
         navigation.navigate('홈');
       } catch (error) {
         console.error(error);

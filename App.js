@@ -17,10 +17,10 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import PostScreen from './src/screens/PostScreen';
 
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {ACCESS_TOKEN_KEY} from './src/api/core';
 
 const queryClient = new QueryClient();
 
-export const LOGIN_TOKEN_KEY = 'LOGIN_TOKEN_KEY';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 export const navigationRef = React.createRef();
@@ -53,7 +53,7 @@ export default function App() {
   useEffect(() => {
     const getTokenAndRefresh = async () => {
       // EncryptedStorage.clear();
-      const token = await EncryptedStorage.getItem(LOGIN_TOKEN_KEY);
+      const token = await EncryptedStorage.getItem(ACCESS_TOKEN_KEY);
       setIsLoggedIn(!!token);
       navigationRef.current?.navigate(token ? '홈' : '로그인');
       console.log(token, !!token);

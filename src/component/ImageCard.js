@@ -7,6 +7,7 @@ export function ImageCard({title, imgs}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [cardHeight, setCardHeight] = useState(0);
+  const slides = new Array(5).fill(0);
   const linearHeight = cardHeight / 3.3;
 
   const onLayout = e => {
@@ -59,10 +60,10 @@ export function ImageCard({title, imgs}) {
               style={{
                 flexDirection: 'row',
                 width: '100%',
-                justifyContent: 'flex-start',
+                justifyContent: 'space-between',
                 borderRadius: 10,
               }}>
-              {imgs.map((item, i) => (
+              {slides.map((item, i) => (
                 <View
                   key={i}
                   style={[
@@ -70,6 +71,7 @@ export function ImageCard({title, imgs}) {
                     {
                       backgroundColor:
                         currentIndex === i ? '#FFFFFF' : '#8F8F8F',
+                      opacity: imgs.length <= i ? 0 : 1,
                     },
                   ]}
                 />
