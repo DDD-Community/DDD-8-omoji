@@ -1,13 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-} from 'react-native';
+import {Image, Pressable, StyleSheet, View, Dimensions} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const {width, height} = Dimensions.get('window');
@@ -53,8 +46,7 @@ export default function PostImageCard({title, imgs}) {
           start={{x: 1, y: 0}}
           end={{x: 1, y: 1}}
           locations={[0.5, 1]}
-          colors={['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
-          style={[styles.linearGradientLayer, {height: linearHeight}]}>
+          colors={['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}>
           <View
             style={{
               position: 'absolute',
