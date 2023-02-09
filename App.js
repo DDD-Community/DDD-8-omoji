@@ -126,7 +126,16 @@ export default function App() {
               <Stack.Screen name="홈" component={HomeTabs} />
               <Stack.Screen name="로그인" component={LoginScreen} />
               <Stack.Screen name="둘러보기" component={PreviewScreen} />
-              <Stack.Screen name="게시글" component={PostScreen} />
+              <Stack.Screen
+                name="게시글"
+                component={PostScreen}
+                options={{
+                  headerShown: true,
+                  headerBackButtonMenuEnabled: true,
+                  headerBackTitle: '',
+                  headerTitle: '',
+                }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
 
