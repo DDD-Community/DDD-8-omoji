@@ -63,6 +63,9 @@ export function UploadScreen({show, onOuterClick}) {
       return requestPostPosts(formData);
     },
     {
+      onSuccess: () => {
+        resetForm();
+      },
       onError: error => {
         Alert.alert(error.message);
       },
@@ -105,7 +108,6 @@ export function UploadScreen({show, onOuterClick}) {
     );
 
     mutate(formData);
-    resetForm();
     setImages([]);
 
     return onOuterClick();
