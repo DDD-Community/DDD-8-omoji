@@ -35,3 +35,11 @@ export const requestGetEvaluate = async () => {
 export const requestPostEvaluate = async (postId, evaluateEnum) => {
   return axios.post('/evaluate', {postId, evaluateEnum});
 };
+
+export const requestPostComment = async (postId, comment) => {
+  return axios.post(`/posts/${postId}/comments`, {comment});
+};
+
+export const requestGetComments = async postId => {
+  return axios.get(`/posts/${postId}/comments`);
+};
