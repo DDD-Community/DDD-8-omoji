@@ -28,7 +28,7 @@ export default function MyPageScreen() {
     queryKey: ['myPosts'],
     queryFn: async () => {
       const {data} = await requestGetMyPosts();
-      return data;
+      return data.posts;
     },
   });
 
@@ -51,23 +51,26 @@ export default function MyPageScreen() {
   return (
     <View>
       <View style={{paddingTop: 16, paddingLeft: 20, paddingBottom: 18}}>
-        <Text style={{fontWeight: '700', fontSize: 24, color: '#fff'}}>
+        <Text style={{fontWeight: '700', fontSize: 24, color: 'red'}}>
           {user.nickname}
         </Text>
-        <Text
-          style={{
-            fontWeight: '400',
-            fontSize: 14,
-            color: '#858585',
-            marginTop: 8,
-          }}
-        />
+        {myPosts && (
+          <Text
+            style={{
+              fontWeight: '400',
+              fontSize: 14,
+              color: '#858585',
+              marginTop: 8,
+            }}>
+            게시물 {myPosts.length}
+          </Text>
+        )}
       </View>
 
-      <View>
+      <View style={{paddingBottom: 200}}>
         <FlatList
           keyExtractor={item => item.id}
-          data={myPosts.posts}
+          data={myPosts}
           renderItem={({item}) => (
             <TouchableOpacity
               onPress={() => {
