@@ -17,7 +17,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import CommentIcon from '../imgs/comment.png';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {useQuery} from '@tanstack/react-query';
-import ThreeDotIcon from '../../assets/iconThreeDot.svg';
 import {
   requestGetPost,
   requestGetComments,
@@ -136,9 +135,6 @@ export default function PostScreen() {
             paddingRight: 35,
             paddingTop: 10,
           }}>
-          <View>
-            <Image source={ThreeDotIcon} />
-          </View>
           <Text style={styles.title}>{post.title}</Text>
 
           <View style={styles.tagContainer}>
