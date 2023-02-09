@@ -94,6 +94,8 @@ export function UploadScreen({show, onOuterClick}) {
     formData.append('title', form.title);
     formData.append('description', form.description);
     formData.append('events', form.events);
+    formData.append('styles', form.styles);
+    formData.append('location', form.location);
     form.imgs.forEach(img =>
       formData.append('imgs', {
         name: img.name,
