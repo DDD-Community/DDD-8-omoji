@@ -26,8 +26,8 @@ export default function MyPageScreen() {
     error,
   } = useQuery({
     queryKey: ['myPosts'],
-    queryFn: async ({pageParam = 0}) => {
-      const {data} = await requestGetMyPosts(pageParam, pageParam + 5);
+    queryFn: async () => {
+      const {data} = await requestGetMyPosts();
       return data;
     },
   });
