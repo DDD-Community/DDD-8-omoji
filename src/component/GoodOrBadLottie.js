@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {Animated, View} from 'react-native';
 
 import LottieView from 'lottie-react-native';
@@ -37,8 +38,8 @@ export default function GoodOrBadLottie({type, activated}) {
           <LottieView
             source={
               type === 'good'
-                ? require('../imgs/good.json')
-                : require('../imgs/bad.json')
+                ? require('../../assets/lottie/good.json')
+                : require('../../assets/lottie/bad.json')
             }
             progress={animationProgress.current}
             style={{
