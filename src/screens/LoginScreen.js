@@ -1,12 +1,14 @@
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useLayoutEffect, useState} from 'react';
-import {requestGetNaverLogin} from '../api/auth';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+
 import NaverLogin from '@react-native-seoul/naver-login';
-import EncryptedStorage from 'react-native-encrypted-storage';
-import {userState} from '../atom/loginAtoms';
-import {useRecoilState} from 'recoil';
 import Config from 'react-native-config';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {useRecoilState} from 'recoil';
+
+import {requestGetNaverLogin} from '../api/auth';
 import {ACCESS_TOKEN_KEY} from '../api/core';
+import {userState} from '../atom/loginAtoms';
 
 export function LoginScreen({navigation}) {
   const [success, setSuccessResponse] = useState();

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import EncryptedStorage from 'react-native-encrypted-storage';
 import Config from 'react-native-config';
+import EncryptedStorage from 'react-native-encrypted-storage';
+
 import {requestRefresh} from './auth';
 
 const BASE_URL = Config.BASE_URL;

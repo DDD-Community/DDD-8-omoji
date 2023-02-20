@@ -1,33 +1,35 @@
+import React, {useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  TextInput,
-  Image,
   Alert,
   Button,
+  Dimensions,
+  Image,
   Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
-import Modal from 'react-native-modal';
-import React, {useState} from 'react';
-import {Comment} from '../component/Comment';
-import {Tag} from '../component/Tag';
-import {ScrollView} from 'react-native-gesture-handler';
-import CommentIcon from '../imgs/comment.png';
+
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {useQuery} from '@tanstack/react-query';
+import {useMutation} from '@tanstack/react-query';
+import {ScrollView} from 'react-native-gesture-handler';
+import Modal from 'react-native-modal';
+
 import {
-  requestGetPost,
-  requestGetComments,
-  requestPostComment,
   requestDeletePost,
+  requestGetComments,
+  requestGetPost,
+  requestPostComment,
 } from '../api/posts';
+import {Comment} from '../component/Comment';
+import {EvaluateButton} from '../component/EvaluateButton';
+import PostImageCard from '../component/PostImageCard';
+import {Tag} from '../component/Tag';
+import CommentIcon from '../imgs/comment.png';
 import GoodIcon from '../imgs/good.png';
 import HmmIcon from '../imgs/hmm.png';
-import PostImageCard from '../component/PostImageCard';
-import {EvaluateButton} from '../component/EvaluateButton';
-import {useMutation} from '@tanstack/react-query';
 
 const {width, height} = Dimensions.get('window');
 

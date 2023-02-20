@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+
 import CommentIcon from '../imgs/three-dot.png';
 
 const {width} = Dimensions.get('window');

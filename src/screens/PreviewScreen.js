@@ -1,14 +1,16 @@
-import {View, Image} from 'react-native';
 import React, {useState} from 'react';
-import Preview1 from '../imgs/preview1.png';
-import Preview2 from '../imgs/preview2.png';
-import Preview3 from '../imgs/preview3.png';
-import {Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
+import {Image, View} from 'react-native';
+import {Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
+
 import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+
+import Preview1 from '../imgs/preview1.png';
+import Preview2 from '../imgs/preview2.png';
+import Preview3 from '../imgs/preview3.png';
 
 const {width} = Dimensions.get('window');
 

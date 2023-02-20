@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
-import {Image, Pressable, StyleSheet, View, Dimensions} from 'react-native';
+import {Dimensions, Image, Pressable, StyleSheet, View} from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 const {width, height} = Dimensions.get('window');

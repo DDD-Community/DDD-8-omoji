@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
 import {
   Dimensions,
   FlatList,
@@ -9,8 +8,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import CustomIcon from './CustomIcon';
+
+import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
 import {useRecoilState} from 'recoil';
+
+import CustomIcon from './CustomIcon';
 import {uploadFormState} from '../atom/uploadAtoms';
 
 export function ImageUploader({setImages, images}) {

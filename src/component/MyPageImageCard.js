@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Dimensions,
   Image,
@@ -6,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React from 'react';
+
 import GoodIcon from '../imgs/mypage-good.png';
 import HmmIcon from '../imgs/mypage-hmm.png';
 

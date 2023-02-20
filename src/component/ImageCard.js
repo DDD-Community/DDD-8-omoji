@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 export function ImageCard({title, imgs}) {

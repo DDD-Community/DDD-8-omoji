@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
-import LottieView from 'lottie-react-native';
 import {Animated, View} from 'react-native';
+
+import LottieView from 'lottie-react-native';
 
 export default function GoodOrBadLottie({type, activated}) {
   const animationProgress = useRef(new Animated.Value(0));

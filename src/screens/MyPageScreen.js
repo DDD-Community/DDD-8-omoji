@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Dimensions,
   FlatList,
@@ -6,13 +7,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MyPageImageCard from '../component/MyPageImageCard';
+
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
 import {useQuery} from '@tanstack/react-query';
-import {requestGetMyPosts} from '../api/posts';
 import {useRecoilState} from 'recoil';
+
+import {requestGetMyPosts} from '../api/posts';
 import {userState} from '../atom/loginAtoms';
+import MyPageImageCard from '../component/MyPageImageCard';
 
 const {width} = Dimensions.get('window');
 

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
-import HmmImage from '../imgs/hmm.png';
+import {Image, StyleSheet, View} from 'react-native';
+
 import GoodImage from '../imgs/good.png';
+import HmmImage from '../imgs/hmm.png';
 
 export function EvaluateButton({type, onPress}) {
   const image = type === 'good' ? GoodImage : HmmImage;

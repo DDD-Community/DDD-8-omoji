@@ -1,10 +1,12 @@
 import {useEffect, useRef, useState} from 'react';
 import {Dimensions, StyleSheet, View} from 'react-native';
+
 import CardStack from 'react-native-card-stack-swiper';
-import {ImageCard} from '../component/ImageCard';
+
+import {requestGetEvaluate, requestPostEvaluate} from '../api/posts';
 import {EvaluateButton} from '../component/EvaluateButton';
 import GoodOrBadLottie from '../component/GoodOrBadLottie';
-import {requestGetEvaluate, requestPostEvaluate} from '../api/posts';
+import {ImageCard} from '../component/ImageCard';
 
 const {width} = Dimensions.get('window');
 

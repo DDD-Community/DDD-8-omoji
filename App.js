@@ -1,23 +1,24 @@
 import React, {useEffect} from 'react';
-import {DarkTheme, NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {MainScreen} from './src/screens/MainScreen';
-import CustomIcon from './src/component/CustomIcon';
-import {UploadScreen} from './src/screens/UploadScreen';
 import {StyleSheet} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import MyPageScreen from './src/screens/MyPageScreen';
-import 'react-native-gesture-handler';
-import {LoginScreen} from './src/screens/LoginScreen';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RecoilRoot} from 'recoil';
-import SplashScreen from 'react-native-splash-screen';
-import PreviewScreen from './src/screens/PreviewScreen';
-import EncryptedStorage from 'react-native-encrypted-storage';
-import PostScreen from './src/screens/PostScreen';
 
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import 'react-native-gesture-handler';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import SplashScreen from 'react-native-splash-screen';
+import {RecoilRoot} from 'recoil';
+
 import {ACCESS_TOKEN_KEY} from './src/api/core';
+import CustomIcon from './src/component/CustomIcon';
+import {LoginScreen} from './src/screens/LoginScreen';
+import {MainScreen} from './src/screens/MainScreen';
+import MyPageScreen from './src/screens/MyPageScreen';
+import PostScreen from './src/screens/PostScreen';
+import PreviewScreen from './src/screens/PreviewScreen';
+import {UploadScreen} from './src/screens/UploadScreen';
 
 const queryClient = new QueryClient();
 

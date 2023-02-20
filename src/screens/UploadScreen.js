@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  Alert,
   Animated,
   Easing,
   Platform,
@@ -8,17 +9,18 @@ import {
   Text,
   useWindowDimensions,
   View,
-  Alert,
 } from 'react-native';
+
+import {useMutation} from '@tanstack/react-query';
+import {ScrollView} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useRecoilState, useResetRecoilState} from 'recoil';
+
+import {requestPostPosts} from '../api/posts';
+import {uploadFormState} from '../atom/uploadAtoms';
+import CustomIcon from '../component/CustomIcon';
 import {ImageUploader} from '../component/ImageUploader';
 import {ImageUploadForm} from '../component/ImageUploadForm';
-import CustomIcon from '../component/CustomIcon';
-import {useRecoilState, useResetRecoilState} from 'recoil';
-import {uploadFormState} from '../atom/uploadAtoms';
-import {requestPostPosts} from '../api/posts';
-import {ScrollView} from 'react-native-gesture-handler';
-import {useMutation} from '@tanstack/react-query';
 
 const DEFAULT_HEIGHT = 300;
 

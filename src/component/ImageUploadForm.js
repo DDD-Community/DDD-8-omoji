@@ -1,8 +1,10 @@
-import {StyleSheet, Text, TextInput, View, Dimensions} from 'react-native';
-import CustomIcon from './CustomIcon';
+import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
+
 import {useRecoilState} from 'recoil';
-import {uploadFormState} from '../atom/uploadAtoms';
+
+import CustomIcon from './CustomIcon';
 import UploadTag from './UploadTag';
+import {uploadFormState} from '../atom/uploadAtoms';
 
 const TITLE_MAX_LENGTH = 38;
 const CONTENT_MAX_LENGTH = 100;
