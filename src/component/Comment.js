@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 
-import CommentIcon from '../imgs/three-dot.png';
+import CommentIcon from '../../assets/three-dot.png';
 
 const {width} = Dimensions.get('window');
 

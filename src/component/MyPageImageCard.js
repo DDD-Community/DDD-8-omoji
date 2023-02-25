@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 
-import GoodIcon from '../imgs/mypage-good.png';
-import HmmIcon from '../imgs/mypage-hmm.png';
+import GoodIcon from '../../assets/mypage-good.png';
+import HmmIcon from '../../assets/mypage-hmm.png';
 
 const {width} = Dimensions.get('window');
 

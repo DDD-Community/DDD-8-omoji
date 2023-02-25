@@ -17,6 +17,9 @@ import {useMutation} from '@tanstack/react-query';
 import {ScrollView} from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 
+import CommentIcon from '../../assets/comment.png';
+import GoodIcon from '../../assets/good.png';
+import HmmIcon from '../../assets/hmm.png';
 import {
   requestDeletePost,
   requestGetComments,
@@ -27,9 +30,6 @@ import {Comment} from '../component/Comment';
 import {EvaluateButton} from '../component/EvaluateButton';
 import PostImageCard from '../component/PostImageCard';
 import {Tag} from '../component/Tag';
-import CommentIcon from '../imgs/comment.png';
-import GoodIcon from '../imgs/good.png';
-import HmmIcon from '../imgs/hmm.png';
 
 const {width, height} = Dimensions.get('window');
 

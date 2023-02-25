@@ -8,9 +8,9 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-import Preview1 from '../imgs/preview1.png';
-import Preview2 from '../imgs/preview2.png';
-import Preview3 from '../imgs/preview3.png';
+import Preview1 from '../../assets/preview1.png';
+import Preview2 from '../../assets/preview2.png';
+import Preview3 from '../../assets/preview3.png';
 
 const {width} = Dimensions.get('window');
 
