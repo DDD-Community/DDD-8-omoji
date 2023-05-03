@@ -33,7 +33,7 @@ import {Tag} from '../component/Tag';
 
 const {width, height} = Dimensions.get('window');
 
-export default function PostScreen() {
+export function PostScreen() {
   const onPressGood = () => {};
   const onPressBad = () => {};
   const navigator = useNavigation();

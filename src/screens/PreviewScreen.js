@@ -14,7 +14,7 @@ import Preview3 from '../../assets/preview3.png';
 
 const {width} = Dimensions.get('window');
 
-const PreviewScreen = () => {
+export const PreviewScreen = () => {
   const [preview, setPreview] = useState(Preview1);
   const [step, setStep] = useState(0);
   const navigation = useNavigation();
@@ -41,8 +41,3 @@ const PreviewScreen = () => {
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  safeAreaView: {},
-});
-export default PreviewScreen;

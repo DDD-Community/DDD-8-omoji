@@ -15,9 +15,9 @@ import {ACCESS_TOKEN_KEY} from './src/api/core';
 import CustomIcon from './src/component/CustomIcon';
 import {LoginScreen} from './src/screens/LoginScreen';
 import {MainScreen} from './src/screens/MainScreen';
-import MyPageScreen from './src/screens/MyPageScreen';
-import PostScreen from './src/screens/PostScreen';
-import PreviewScreen from './src/screens/PreviewScreen';
+import {MyPageScreen} from './src/screens/MyPageScreen';
+import {PostScreen} from './src/screens/PostScreen';
+import {PreviewScreen} from './src/screens/PreviewScreen';
 import {UploadScreen} from './src/screens/UploadScreen';
 
 const queryClient = new QueryClient();

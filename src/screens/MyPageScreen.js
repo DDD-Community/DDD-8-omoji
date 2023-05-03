@@ -18,7 +18,7 @@ import MyPageImageCard from '../component/MyPageImageCard';
 
 const {width} = Dimensions.get('window');
 
-export default function MyPageScreen() {
+export function MyPageScreen() {
   const navigator = useNavigation();
   const [user] = useRecoilState(userState);
 
